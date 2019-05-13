@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App on Now 2.0"/>
+    <Header />
+    <Home />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import Home from './components/Home.vue'
+import './styles.css'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    Home
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto');
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Lato', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* color: #2c3e50; */
 }
 </style>
