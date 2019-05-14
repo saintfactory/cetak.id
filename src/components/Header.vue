@@ -6,7 +6,7 @@
                 <a class="f6 link hover-white dib black dim mr3 mr4-ns" href="#">Cara Print</a>
             </div>
             <a class="flex items-center" href="#">
-                <img src="../assets/logo.png" class="logo" alt="Logo Cetak.id"/>
+                <img src="../assets/img/logo.png" class="logo" alt="Logo Cetak.id"/>
             </a>
             <div class="flex-grow pa3 flex items-center">
                 <a class="f6 link hover-white dib black dim mr3 mr4-ns" href="#0">Login</a>

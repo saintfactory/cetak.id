@@ -1,7 +1,7 @@
 <template>
     <div class="home w-100">
         <div class="dt w-100">
-            <div class="hero v-mid dtc w-100">
+            <div class="hero cover v-mid dtc w-100">
                 <h2 class="white">Cetak Dokumen Kamu dengan Mudah dan Cepat di Mana Saja</h2>
                 <p class="i white">Cetak.ID - Printing Apps Pertama di Indonesia </p>
                 <img class="db center mv4" src="../assets/img/undraw_in_sync_xwsa.png" alt="Cetak dokumen mudah dengan cetak.id"/>

@@ -6,14 +6,10 @@ header {
     height: 87px;
 }
 
-.logo {
-    height: 50%;
-    width: 30%;
-}
-
 .hero {
     background: #4286B7;
-    height: 600px;
+    background:url('./assets/img/backgroundcetak.png') no-repeat center;
+    height: 800px;
 }
 
 .header--button {
@@ -22,4 +18,14 @@ header {
 
 .hero--button {
     color: #C7E87C;
+}
+
+.contact-person {
+    background: #535461;
+    height: 200px;
+}
+
+.copyright {
+    background: #46474D;
+    height: 80px;
 }
