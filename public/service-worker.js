@@ -26,7 +26,19 @@ const DATA_CACHE_NAME = 'data-cache-v1'
 const FILES_TO_CACHE = [
   '/',
   '/index.html',
-  '/offline.html'
+  // '../src/assets/img/backgroundcetak.png',
+  // '../src/assets/img/logo.png',
+  // '../src/assets/img/undraw_in_sync_xwsa.png',
+  // '../src/assets/img/undraw_navigation_lytx.png',
+  // '../src/assets/img/undraw_navigation_lytx.png',
+  // '../src/assets/img/undraw_printing_invoices_5r4r.png',
+  // '../src/assets/img/undraw_uploading_go67.png',
+  // '../src/App.vue',
+  // '../src/main.js',
+  // '../src/styles.css',
+  // '../src/components/Header.vue',
+  // '../src/components/Home.vue',
+  // '../src/components/Footer.vue'
 ];
 
 self.addEventListener('install', (evt) => {
