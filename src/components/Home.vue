@@ -5,11 +5,11 @@
                 <h2 class="white">Cetak Dokumen Kamu dengan Mudah dan Cepat di Mana Saja</h2>
                 <p class="i white">Cetak.ID - Printing Apps Pertama di Indonesia </p>
                 <img class="db center mv4" src="../assets/img/undraw_in_sync_xwsa.png" alt="Cetak dokumen mudah dengan cetak.id"/>
-                <a class="hero--button f6 dib bg-animate grow hover-white hover-bg-green no-underline pv3 ph4 br-pill ba bw1"  href="#0">Cetak Sekarang</a>
+                <a v-on:click="getStarted" class="hero--button f6 dib bg-animate grow hover-white hover-bg-green no-underline pv3 ph4 br-pill ba bw1" href="#feature">Cetak Sekarang</a>
             </div>
         </div>
         <h3 class="center mv4 fw1 f2">Bagaimana Caranya?</h3>
-        <div class="feature flex justify-around w-100">
+        <div class="flex justify-around w-100" id="feature">
             <div class="w-25">
                 <img src="../assets/img/undraw_uploading_go67.png" alt="Upload Dokumen di Cetak.id">
                 <p class="f5 black">Upload</p>
@@ -28,8 +28,8 @@
             <div class="w-25">
                 <img src="../assets/img/undraw_navigation_lytx.png" alt="Upload Dokumen di Cetak.id">
                 <p class="f5 black">Ambil</p>
-                <p class="f6 black lh-copy">Ambil hasil cetak langsung <br>
-                 di tempat pilihan kamu
+                <p class="f6 black lh-copy">
+                    {{ content }}
                 </p>
             </div>
         </div>
@@ -42,7 +42,13 @@ export default {
     name: 'Home',
     data() {
         return {
-            post: null
+            content: 'Ambil hasil cetak langsung di tempat pilihan kamu'
+        }
+    },
+    methods: {
+        getStarted: function(){
+            // alert("Welcome to Cetak.id! " + Date());
+            document.getElementsByClassName("hero--button").scrollspy({target:".home"});
         }
     }
 }
