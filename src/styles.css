@@ -29,3 +29,9 @@ header {
     background: #46474D;
     height: 80px;
 }
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}

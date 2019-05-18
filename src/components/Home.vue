@@ -14,15 +14,15 @@
                 <img src="../assets/img/undraw_uploading_go67.png" alt="Upload Dokumen di Cetak.id">
                 <p class="f5 black">Upload</p>
                 <p class="f6 black lh-copy">Buat akun Cetak.ID, lalu <br>
-                 upload dokumen kamu dan <br>
-                 lakukan proses pembayaran
+                upload dokumen kamu dan <br>
+                lakukan proses pembayaran
                 </p>
             </div>
             <div class="w-25">
                 <img src="../assets/img/undraw_printing_invoices_5r4r.png" alt="Upload Dokumen di Cetak.id">
                 <p class="f5 black">Cetak</p>
                 <p class="f6 black lh-copy">Dokumen kamu akan di cetak <br> 
-                 sesuai dengan tempat print pilihan kamu
+                sesuai dengan tempat print pilihan kamu
                 </p>
             </div>
             <div class="w-25">
@@ -48,7 +48,7 @@ export default {
     methods: {
         getStarted: function(){
             // alert("Welcome to Cetak.id! " + Date());
-            document.getElementsByClassName("hero--button").scrollspy({target:".home"});
+            document.getElementsByClassName("hero--button").scrollspy({target: ".home", offset: 100});
         }
     }
 }
