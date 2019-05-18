@@ -35,3 +35,16 @@ header {
     vertical-align: middle;
     width: 100%;
 }
+
+.feature2 {
+    background: #4286B7;
+    height: 400px;
+}
+
+.feature2--title {
+    font-style: normal;
+    font-weight: 100;
+    line-height: 64px;
+    text-align: center;
+    color: #C7E87C;
+}

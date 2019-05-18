@@ -33,6 +33,20 @@
                 </p>
             </div>
         </div>
+        <div class="feature2">
+            <h1 class="feature2--title pt5">110.000+ Dokumen</h1>
+            <p class="white">Sudah berhasil dicetak</p>
+            <p class="white lh-copy">Ratusan ribu pengguna semakin mudah dan cepat<br>
+                mencetak dokumen setelah menggunakan Cetak.ID
+            </p>
+            <a 
+                v-on:click="getStarted" 
+                class="hero--button f6 dib bg-animate grow hover-white hover-bg-green no-underline pv3 ph4 mv4 br-pill ba bw1" 
+                href="#feature"
+            >
+                Cetak Sekarang
+            </a>
+        </div>
     </div>
 </template>
 
