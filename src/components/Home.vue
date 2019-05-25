@@ -1,5 +1,6 @@
 <template>
     <div class="home w-100">
+        <Header />
         <div class="dt w-100">
             <div class="hero cover v-mid dtc w-100">
                 <h2 class="white">Cetak Dokumen Kamu dengan Mudah dan Cepat di Mana Saja</h2>
@@ -47,10 +48,13 @@
                 Cetak Sekarang
             </a>
         </div>
+        <Footer />
     </div>
 </template>
 
 <script>
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 
 export default {
     name: 'Home',
@@ -58,6 +62,10 @@ export default {
         return {
             content: 'Ambil hasil cetak langsung di tempat pilihan kamu'
         }
+    },
+    components: {
+        Header,
+        Footer
     },
     methods: {
         getStarted: function(){
