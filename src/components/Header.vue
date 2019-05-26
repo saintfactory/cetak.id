@@ -2,8 +2,8 @@
     <div class="header">
         <header class="flex fixed justify-between bb b--white-10 w-100">
             <div class="flex-grow pa3 flex items-center">
-                <a class="f6 link hover-white dib black dim mr3 mr4-ns" href="#0">Tentang Kami</a>
-                <a class="f6 link hover-white dib black dim mr3 mr4-ns" href="#">Cara Print</a>
+                <router-link to='/tentang-kami' class="f6 link hover-white dib black dim mr3 mr4-ns">Tentang Kami</router-link>
+                <router-link to='/cara-print' class="f6 link hover-white dib black dim mr3 mr4-ns">Cara Print</router-link>
             </div>
             <router-link to='/' class="flex items-center">
                 <img src="../assets/img/logo.png" class="logo" alt="Logo Cetak.id"/>
