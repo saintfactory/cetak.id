@@ -4,6 +4,8 @@ import Join from './components/Join.vue'
 import TentangKami from './components/TentangKami.vue'
 import CaraPrint from './components/CaraPrint.vue'
 import Secure from './components/Secure.vue'
+import RegisterUser from './components/RegisterUser.vue'
+import RegisterPartnership from './components/RegisterPartnership.vue'
 
 const routes = [
     { 
@@ -15,6 +17,16 @@ const routes = [
         path: '/login', 
         name: 'login',
         component: Login 
+    },
+    {
+        path: '/register-user',
+        name: 'register-user',
+        component: RegisterUser
+    },
+    {
+        path: '/register-partnership',
+        name: 'register-partnership',
+        component: RegisterPartnership
     },
     { 
         path: '/join', 

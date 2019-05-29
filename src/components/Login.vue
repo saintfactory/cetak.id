@@ -9,8 +9,8 @@
             <input type="password" class="ma2 pa2 bg-transparent hover-bg-blue hover-white" name="password" v-model="input.password"  /> <br>
             <input type="button" class="f6 grow no-underline br-pill ph3 pv2 mv2 b mb2 dib white" v-on:click="login()" value="Login" />
         </form>
-        <p class="mv3 mt4 white">Lupa password ? <a class="link b i white"> Reset password sekarang </a></p>
-        <p class="mv3 white">Belum punya akun ? <a class="link b i white">Register sekarang</a></p>
+        <p class="mv3 mt4 white">Lupa password ? <router-link to="" class="link b i white"> Reset password sekarang </router-link></p>
+        <p class="mv3 white">Belum punya akun ? <router-link to="/join" class="link b i white">Register sekarang</router-link></p>
     </div>
 </template>
 
