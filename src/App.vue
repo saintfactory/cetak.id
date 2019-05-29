@@ -1,21 +1,39 @@
 <template>
   <div id="app">
-    <Header />
-    <Home />
+    <div id="nav">
+        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+    </div>
+    <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Home from './components/Home.vue'
 import './styles.css'
 
 export default {
   name: 'app',
-  components: {
-    Header,
-    Home
-  }
+  // data() {
+  //   return {
+  //       authenticated: false,
+  //       mockAccount: {
+  //           email: "nraboy",
+  //           password: "password"
+  //       }
+  //   }
+  // },
+  // mounted() {
+  //     if(!this.authenticated) {
+  //         this.$router.replace({ name: "login" });
+  //     }
+  // },
+  // methods: {
+  //     setAuthenticated(status) {
+  //         this.authenticated = status;
+  //     },
+  //     logout() {
+  //         this.authenticated = false;
+  //     }
+  // }
 }
 </script>
 

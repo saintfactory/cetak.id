@@ -1,19 +1,20 @@
 @import '~tachyons/css/tachyons.css';
 
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
 header {
     background: #C7E87C;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
     height: 87px;
 }
 
-.logo {
-    height: 50%;
-    width: 30%;
-}
-
 .hero {
     background: #4286B7;
-    height: 600px;
+    background:url('./assets/img/backgroundcetak.png') no-repeat center;
+    height: 800px;
 }
 
 .header--button {
@@ -21,5 +22,34 @@ header {
 }
 
 .hero--button {
+    color: #C7E87C;
+}
+
+.contact-person {
+    background: #535461;
+    height: 200px;
+}
+
+.copyright {
+    background: #46474D;
+    height: 80px;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.feature2 {
+    background: #4286B7;
+    height: 400px;
+}
+
+.feature2--title {
+    font-style: normal;
+    font-weight: 100;
+    line-height: 64px;
+    text-align: center;
     color: #C7E87C;
 }
