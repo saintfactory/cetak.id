@@ -4,8 +4,11 @@ import App from './App.vue'
 import 'tachyons'
 import routes from './routes'
 import './styles.css'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
 
 
+Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
