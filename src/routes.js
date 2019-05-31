@@ -3,9 +3,9 @@ import Login from './components/Login.vue'
 import Join from './components/Join.vue'
 import TentangKami from './components/TentangKami.vue'
 import CaraPrint from './components/CaraPrint.vue'
-import Secure from './components/Secure.vue'
 import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
+import DashboardPartnership from '../partnership/src/components/Dashboard.vue'
 
 const routes = [
     { 
@@ -41,9 +41,9 @@ const routes = [
         component: CaraPrint 
     },
     {
-        path: "/secure",
-        name: "secure",
-        component: Secure
+        path: "/dashboard-partnership",
+        name: "dashboard-partnership",
+        component: DashboardPartnership
     }
 ];
 

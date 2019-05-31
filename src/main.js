@@ -6,11 +6,13 @@ import routes from './routes'
 import './styles.css'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-
+import Vuex from 'vuex'
+import 'es6-promise/auto'
 
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
 const router = new VueRouter({routes})
 

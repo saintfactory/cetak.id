@@ -31,12 +31,12 @@ export default {
             if (this.input.email !== "" && this.input.password != "") {
                 if (this.input.email == this.$parent.mockAccount.email && this.input.password == this.$parent.mockAccount.password) {
                     this.$emit("authenticated", true);
-                    this.$router.replace({ name:"secure" });
+                    this.$router.replace({ name:"dashboard-partnership" });
                 } else {
-                    console.log("The email or password is incorrect")
+                    alert("The email or password is incorrect")
                 }
             } else {
-                console.log("A email and password must be present")
+                    alert("A email and password must be present")
             }
         }
     }
