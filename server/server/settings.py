@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'product',
+    'users',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +163,5 @@ CORS_ORIGIN_WHITELIST = (
     'localhost'
 
 )
+
+AUTH_USER_MODELS = 'users.CustomUser'
