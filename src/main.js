@@ -7,6 +7,7 @@ import routes from './routes'
 import './styles.css'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
 import Vuex from 'vuex'
 import 'es6-promise/auto'
 import Axios from 'axios'
@@ -41,9 +42,9 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    obtainToken(username, password){
+    obtainToken(email, password){
       const payload = {
-        username: username,
+        email: email,
         password: password
       }
 
