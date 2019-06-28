@@ -5,23 +5,25 @@ import App from './App.vue'
 import 'tachyons'
 import routes from './routes'
 import './styles.css'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
 import Vuex from 'vuex'
 import 'es6-promise/auto'
 import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import jwt_decode from 'jwt-decode'
 import { decode } from 'punycode';
+// import VueMaterial from 'vue-material'
+// import 'vue-material/dist/vue-material.min.css'
+// import 'vue-material/dist/theme/default.css'
 
-Vue.use(VueMaterial)
+// Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(Axios, VueAxios)
 
-const router = new VueRouter({routes})
+const router = new VueRouter({
+  routes
+})
 
 const store = new Vuex.Store({
   state: {

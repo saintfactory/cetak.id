@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto');
 #app {
   font-family: 'Open Sans', 'Lato', 'Roboto', sans-serif;
@@ -46,5 +46,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   /* color: #2c3e50; */
+}
+
+router-link {
+  color: white
 }
 </style>
