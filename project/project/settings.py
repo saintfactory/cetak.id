@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
     'pwa',
     'api',
     'corsheaders',
+    'rest_framework.authtoken',
+    'rest_auth',
 
 ]
 
@@ -157,7 +160,24 @@ REST_FRAMEWORK_CLASSES = {
     'DEFAULT_PERMISSION_CLASSES' : {
 
         'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
+
+    },
+
+    'DEFAULT_AUTHENTICATION_CLASSES' : {
+
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
 
     }
+
+}
+
+JWT_AUTH = {
+
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': timedelta(seconds=86400),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
 
 }
