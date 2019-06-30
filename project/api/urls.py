@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = [
 
-	path('board/<int:pk>/', views.board_list),
+	path('board/', views.board_list),
+	path('board/<int:pk>/', views.board_detail),
 
 ]
