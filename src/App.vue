@@ -9,7 +9,11 @@
 </template>
 
 <script>
+/* eslint-disable */ 
 import './styles.css'
+import axios from 'axios'
+
+const url = 'http://127.0.0.1:8000'
 
 export default {
   name: 'app',
@@ -19,7 +23,8 @@ export default {
         mockAccount: {
             email: "test",
             password: "123"
-        }
+        },
+        boards: []
     }
   },
   // mounted() {
@@ -27,6 +32,16 @@ export default {
   //         this.$router.replace({ name: "login" });
   //     }
   // },
+  mounted() {
+    axios.get(url)
+      .then(response => {
+        this.boards = response.data
+        console.log(response.status)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
   methods: {
       setAuthenticated(status) {
           this.authenticated = status;

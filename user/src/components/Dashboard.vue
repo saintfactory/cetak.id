@@ -12,7 +12,7 @@
     <div class="flex pa2 justify-between" >
       <div class="fl w-50 w-25-m w-20-l pa2" v-for="item in items" :key="item.id">
         <a href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music" class="db link dim tc">
-          <img :src="item.img" :alt="item.alt" class="w-100 db outline black-10"/>
+          <img :src="item.img" :alt="item.alt" class="w-100 db"/>
           <dl class="mt2 f6 lh-copy">
             <dt class="clip">Title</dt>
             <dd class="ml0 black truncate w-100">{{item.name}}</dd>
@@ -30,6 +30,7 @@ import print1 from '../img/print1.png'
 import print2 from '../img/print2.png'
 import print3 from '../img/print3.png'
 import print4 from '../img/print4.png'
+
 const items = [
     {
       id: 1,
@@ -70,6 +71,6 @@ export default {
       items,
       user: 'Hilman Luthfi'
     }
-  }
+  },
 }
 </script>
