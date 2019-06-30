@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
 from boards import views
 
 urlpatterns = [
@@ -25,5 +27,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', views.home, name='home'),
     path('api/', include('api.urls')),
+    path('api/auth/obtain_token/', obtain_jwt_token),
+    path('api/auth/refresh_token/', refresh_jwt_token),
 
 ]
