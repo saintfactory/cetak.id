@@ -40,17 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # web application
-    'boards',
-    'widget_tweaks',
-    'accounts',
+    # third parties / library
     'rest_framework',
-    'pwa',
-    'api',
-    'corsheaders',
     'rest_framework.authtoken',
     'rest_auth',
+    'widget_tweaks',
+    'corsheaders',
+    'pwa',
 
+    # application directories
+    'accounts',
+    'api',
+    'boards',
+  
 ]
 
 MIDDLEWARE = [
