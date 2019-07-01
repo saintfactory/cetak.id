@@ -5,8 +5,8 @@ import TentangKami from './components/TentangKami.vue'
 import CaraPrint from './components/CaraPrint.vue'
 import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
-import DashboardPartnership from '../partnership/src/components/Dashboard.vue'
-import DashboardUser from '../user/src/components/Dashboard.vue'
+import DashboardPartnership from './components/partnership/Dashboard.vue'
+import DashboardUser from './components/user/Dashboard.vue'
 
 const routes = [
     { 

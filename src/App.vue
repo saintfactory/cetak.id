@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
     </div>
     <router-view @authenticated="setAuthenticated" />
     <!-- <router-view /> -->
@@ -11,44 +11,31 @@
 <script>
 /* eslint-disable */ 
 import './styles.css'
-import axios from 'axios'
-
-const url = 'http://127.0.0.1:8000'
 
 export default {
   name: 'app',
   data() {
     return {
-        authenticated: false,
-        mockAccount: {
-            email: "test",
-            password: "123"
-        },
-        boards: []
+      authenticated: false,
+      mockAccount: {
+          email: "test",
+          password: "123"
+      }
     }
   },
-  // mounted() {
-  //     if(!this.authenticated) {
-  //         this.$router.replace({ name: "login" });
-  //     }
-  // },
   mounted() {
-    axios.get(url)
-      .then(response => {
-        this.boards = response.data
-        console.log(response.status)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  },
-  methods: {
-      setAuthenticated(status) {
-          this.authenticated = status;
-      },
-      logout() {
-          this.authenticated = false;
+      if(!this.authenticated) {
+          this.$router.replace({ name: "login" });
       }
+  },
+  
+  methods: {
+    setAuthenticated(status) {
+        this.authenticated = status;
+    },
+    logout() {
+        this.authenticated = false;
+    }
   }
 }
 </script>
