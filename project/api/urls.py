@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
+from __future__ import unicode_literals
+
 from django.urls import path
 
-from . views import BoardList, BoardDetail
+from . views import *
 
 urlpatterns = [
 
-	# path('board/', views.board_list),
-	# path('board/<int:pk>/', views.board_detail),
 	path('board/', BoardList.as_view(), name='board-list'),
-	path('board/<int:pk>/', BoardDetail.as_view(), name='board-detail',)
+	path('board/<int:pk>/', BoardDetail.as_view(), name='board-detail'),
+	path('board/login/', login),
 
 ]
