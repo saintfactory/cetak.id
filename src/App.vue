@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-    </div>
-    <router-view @authenticated="setAuthenticated" />
-    <!-- <router-view /> -->
+    </div> -->
+    <!-- <router-view @authenticated="setAuthenticated" /> -->
+    <router-view />
   </div>
 </template>
 
@@ -14,29 +14,29 @@ import './styles.css'
 
 export default {
   name: 'app',
-  data() {
-    return {
-      authenticated: false,
-      mockAccount: {
-          email: "test",
-          password: "123"
-      }
-    }
-  },
-  mounted() {
-      if(!this.authenticated) {
-          this.$router.replace({ name: "login" });
-      }
-  },
+  // data() {
+  //   return {
+  //     authenticated: false,
+  //     mockAccount: {
+  //         email: "test",
+  //         password: "123"
+  //     }
+  //   }
+  // },
+  // mounted() {
+  //     if(!this.authenticated) {
+  //         this.$router.replace({ name: "login" });
+  //     }
+  // },
   
-  methods: {
-    setAuthenticated(status) {
-        this.authenticated = status;
-    },
-    logout() {
-        this.authenticated = false;
-    }
-  }
+  // methods: {
+  //   setAuthenticated(status) {
+  //       this.authenticated = status;
+  //   },
+  //   logout() {
+  //       this.authenticated = false;
+  //   }
+  // }
 }
 </script>
 

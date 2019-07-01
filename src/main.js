@@ -13,6 +13,7 @@ import store from '@/store'
 // Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+//Vue.prototype.$store = store
 
 const router = new VueRouter({
   routes
