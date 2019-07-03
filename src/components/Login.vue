@@ -105,6 +105,7 @@ export default {
   position: relative;
   padding-bottom: 10%;
   padding-top: 10%;
+  min-height: 100%;
 }
 
 form {
