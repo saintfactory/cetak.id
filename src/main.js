@@ -6,6 +6,7 @@ import 'tachyons'
 import routes from './routes'
 import './styles.css'
 import store from '@/store'
+
 // import VueMaterial from 'vue-material'
 // import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
@@ -14,6 +15,8 @@ import store from '@/store'
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 //Vue.prototype.$store = store
+
+import '@/assets/fonts/all.css';
 
 const router = new VueRouter({
   routes
