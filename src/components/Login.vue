@@ -3,12 +3,12 @@
     <form>
       <img src="../assets/img/logo.png" class="logo mv3" alt="Logo Cetak.id"/> <br>
       <span class="i">Silahkan Login menggunakan Akun Anda</span> <br>
-      <label class="db fw6 lh-copy f6 black tl" for="email">Email</label>
+      <label class="db fw6 lh-copy f6 black tl" for="username">Username</label>
       <input 
         type="text" 
-        name="email" 
+        name="username" 
         class="ma2 pa2 bg-transparent hover-bg-blue hover-white" 
-        v-model="email" 
+        v-model="username" 
       /><br>
       <label class="db fw6 lh-copy f6 black tl" for="password">Password</label>
       <input 
@@ -37,7 +37,7 @@ export default {
   name: 'Login',
   data(){
     return {
-      email: '',
+      username: '',
       password: ''
     }
   },
@@ -48,7 +48,7 @@ export default {
     //       this.$emit("authenticated", true);
     //       this.$router.replace({ name:"dashboard-partnership" });
     //     } else {
-    //       alert("The email or password is incorrect")
+    //       alert("The username or password is incorrect")
     //     }
     //   } else {
     //     alert("A email and password must be present")
@@ -57,7 +57,7 @@ export default {
     
     login(){
       const payload = {
-        email: this.email,
+        username: this.username,
         password: this.password
       }
       Axios.post(this.$store.state.endpoints.obtainJWT, payload)
@@ -75,23 +75,15 @@ export default {
               withCredentials: true
             }
           }
-          const axiosInstance = Axios.create(base)
-          axiosInstance({
-            url: "/user/",
-            method: "get",
-            params: {}
-          })
-            .then((response) => {
-              this.$store.commit("setAuthUser",
-                {authUser: response.data, isAuthenticated: true}
-              )
-              this.$router.push({name: 'home'})
-            })
-            .catch((error) => {
-              console.log(error);
-              console.debug(error);
-              console.dir(error);
-            })
+          this.$store.commit("setAuthUser",
+            {authUser: response.data, isAuthenticated: true}
+          )
+          this.$router.push({name: 'home'})
+        })
+        .catch((error) => {
+          console.log(error);
+          console.debug(error);
+          console.dir(error);
         })
     }
   }
