@@ -28,6 +28,18 @@
         "infra",
         "test"
       ]
+    },
+    {
+      "login": "irfanshamid",
+      "name": "Irfan Hamid",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/43481363?v=4",
+      "profile": "https://github.com/irfanshamid",
+      "contributions": [
+        "code",
+        "design",
+        "content",
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
