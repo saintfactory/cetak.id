@@ -2,9 +2,22 @@
   <div class="register-user pt4 relative">
     <h2 class="f2 white">Buat Akunmu disini</h2>
     <span class="i white">Silahkan isi data tempat dengan benar</span>
-    <form class="md-layout white tl" @submit="registerUser" method="post" action="/">
+    <form class="md-layout white tl" @submit="registerUser">
       <div class="dt w-100">
-        <div class="dtc ph3 w-50">
+        <input 
+          type="text"
+          v-model="username"
+          placeholder="username"
+        />
+        <input 
+          type="password"
+          v-model="password"
+        />
+        <input 
+          type="password"
+          v-model="passwordConfirm" 
+        />
+        <!-- <div class="dtc ph3 w-50">
           <div class="db">
             <div class="ma3 di">
               <input 
@@ -29,12 +42,12 @@
           <div class="ma3">
             <label
               class="db fw4 lh-copy f6"
-              for="nama"
+              for="name"
             >
-              Nama Lengkap
+              name Lengkap
             </label>
             <input 
-              v-model="nama"
+              v-model="name"
               type="text"
               class="pa2 input-reset ba bg-transparent w-100 measure white"
             />
@@ -44,14 +57,14 @@
           </div>
           <div class="ma3">
             <label
-              for="email"
+              for="username"
               class="db fw4 lh-copy f6"
             >
-              Email
+              Username
             </label>
             <input 
-              v-model="email" 
-              type="email"
+              v-model="username" 
+              type="username"
               class="pa2 input-reset ba bg-transparent w-100 measure white"
             />
             <div v-if="errors.length">
@@ -143,14 +156,15 @@
             type="submit"
             value="Daftar Sekarang"
           />
-        </div>   
+        </div>    -->
       </div>
     </form>
   </div>
 </template>
 
 <script>
-
+/* eslint-disable */ 
+import Axios from 'axios'
 export default {
   name: 'RegisterUser',
   data: () => ({
@@ -161,31 +175,53 @@ export default {
     // errorJob:null,
     // errorPassword: null,
     // errorPasswordConfirm: null,
-    nama: null,
+    //name: null,
     password: null,
     passwordConfirm: null,
-    gender: false,
-    email: null,
-    telp: null,
-    job: false
+    // gender: false,
+    username: null,
+    // telp: null,
+    // job: false
   }),
   methods: {
-    registerUser:function(e){
-      if(this.nama && this.password == this.passwordConfirm && this.gender && this.email && this.job && this.telp){
-        return true
-      } else {
-        this.errors = [];
-        if(!this.nama){
-          this.errors.push("Nama tidak boleh kosong!")
-        }
-        if(!this.password){
-          this.errors.push("Password harus diisi!")
-        }
-        if(this.passwordConfirm != this.password){
-          this.errors.push("Password tidak sama!")
-        }
-        e.preventDefault();
+    // registerUser:function(e){
+    //   if(this.name && this.password == this.passwordConfirm && this.gender && this.email && this.job && this.telp){
+    //     return true
+    //   } else {
+    //     this.errors = [];
+    //     if(!this.name){
+    //       this.errors.push("name tidak boleh kosong!")
+    //     }
+    //     if(!this.password){
+    //       this.errors.push("Password harus diisi!")
+    //     }
+    //     if(this.passwordConfirm != this.password){
+    //       this.errors.push("Password tidak sama!")
+    //     }
+    //     e.preventDefault();
+    //   }
+    // }
+    registerUser(){
+      const payload = {
+        //name: this.name,
+        password: this.password,
+        passwordConfirm: this.passwordConfirm,
+        username: this.username,
+        // gender: this.gender,
+        // telp: this.telp,
+        // job: this.job
       }
+      Axios.post(this.$store.state.endpoints.register, payload)
+        .then((response) => {
+          alert('Register berhasil!')
+          this.$router.push({name: 'login'})
+        })
+        .catch((error) => {
+          console.log(error);
+          console.debug(error);
+          console.dir(error);
+          alert('Register gagal!')
+        })
     }
   }
 }

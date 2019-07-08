@@ -13,11 +13,10 @@ const state = {
   isAuthenticated: false,
   jwt: localStorage.getItem('t'),
   endpoints: {
-    // obtainJWT: 'http://0.0.0.0:10000/auth/obtain_token',
-    // refreshJWT: 'http://0.0.0.0:10000/auth/refresh_token'
     obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
     refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
-    baseUrl: 'http://127.0.0.1:8000/api/auth/'
+    baseUrl: 'http://127.0.0.1:8000/api/auth/',
+    register: 'http://127.0.0.1:8000/signup/'
   }
 }
 

@@ -78,14 +78,18 @@ export default {
           this.$store.commit("setAuthUser",
             {authUser: response.data, isAuthenticated: true}
           )
-          this.$router.push({name: 'home'})
+          this.$router.push({name: 'dashboard-user'})
         })
         .catch((error) => {
           console.log(error);
           console.debug(error);
           console.dir(error);
+          alert("The username or password is incorrect");
         })
     }
+    // login(){
+    //   this.$store.dispatch('login')
+    // }
   }
 }
 </script>
