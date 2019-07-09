@@ -37,11 +37,11 @@ export default new Vuex.Store({
 
   actions: {
     loginAction(){
-      const payload = {
-        username: this.username,
-        password: this.password
-      }
-      axios.post(this.$store.state.endpoints.obtainJWT, payload)
+      // const payload = {
+      //   username: this.username,
+      //   password: this.password
+      // }
+      axios.post(this.state.endpoints.obtainJWT)
         .then((response) => {
           this.$store.commit('updateToken', response.data.token)
           // get and set auth user
@@ -66,6 +66,9 @@ export default new Vuex.Store({
           console.debug(error);
           console.dir(error);
         })
+    },
+    logoutAction(){
+      this.$store.commit('removeToken')
     }
   },
 
@@ -86,6 +89,12 @@ export default new Vuex.Store({
       // TODO: For security purposes, take localStorage out of the project.
       localStorage.removeItem('token');
       state.jwt = null;
+    }
+  },
+
+  getters: {
+    getUser: state => {
+      return state.authUser
     }
   }
 })
