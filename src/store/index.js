@@ -1,3 +1,5 @@
+/*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
+/* eslint-disable */ 
 // import Vue from 'vue'
 // import Vuex from 'vuex'
 // import auth from './modules/auth'
@@ -30,6 +32,40 @@ export default new Vuex.Store({
       obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
       refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
       baseUrl: 'http://127.0.0.1:8000/api/auth/'
+    }
+  },
+
+  actions: {
+    loginAction(){
+      const payload = {
+        username: this.username,
+        password: this.password
+      }
+      axios.post(this.$store.state.endpoints.obtainJWT, payload)
+        .then((response) => {
+          this.$store.commit('updateToken', response.data.token)
+          // get and set auth user
+          const base = {
+            baseURL: this.$store.state.endpoints.baseUrl,
+            headers: {
+              // Set your Authorization to 'JWT'
+              Authorization: `JWT ${this.$store.state.jwt}`,
+              'Content-Type': 'application/json'
+            },
+            xhrFields: {
+              withCredentials: true
+            }
+          }
+          this.$store.commit("setAuthUser",
+            {authUser: response.data, isAuthenticated: true}
+          )
+          this.$router.push({name: 'dashboard-user'})
+        })
+        .catch((error) => {
+          console.log(error);
+          console.debug(error);
+          console.dir(error);
+        })
     }
   },
 

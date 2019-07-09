@@ -24,7 +24,7 @@
               />
               <label for="pria">Wanita</label>
             </div>
-            <small class="i">{{ errorGender }}</small>
+            <!-- <small class="i">{{ errorGender }}</small> -->
           </div>
           <div class="ma3">
             <label

@@ -6,7 +6,13 @@
       </a>
       <div class="dtc v-mid w-75 tr">
         <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">{{user}}</a>
-        <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="Logout">Logout</a>
+        <a 
+          class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" 
+          href="#"
+          title="Logout"
+        >
+          Logout
+        </a>
       </div>
     </nav>
     <div class="dt w-100">
@@ -47,6 +53,7 @@
 // import print3 from '../../img/print3.png'
 // import print4 from '../../img/print4.png'
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 const url = 'http://127.0.0.1:8000/api/board/'
 // const items = [
@@ -89,7 +96,8 @@ export default {
     return {
       //items,
       user: 'Hilman Luthfi',
-      boards: []
+      boards: [],
+      search: null
     }
   },
   mounted() {
@@ -103,5 +111,6 @@ export default {
         console.log(error)
       })
   },
+  
 }
 </script>
