@@ -1,3 +1,5 @@
+/*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
+/* eslint-disable */ 
 // import Vue from 'vue'
 // import Vuex from 'vuex'
 // import auth from './modules/auth'
@@ -33,6 +35,43 @@ export default new Vuex.Store({
     }
   },
 
+  actions: {
+    loginAction(){
+      // const payload = {
+      //   username: this.username,
+      //   password: this.password
+      // }
+      axios.post(this.state.endpoints.obtainJWT)
+        .then((response) => {
+          this.$store.commit('updateToken', response.data.token)
+          // get and set auth user
+          const base = {
+            baseURL: this.$store.state.endpoints.baseUrl,
+            headers: {
+              // Set your Authorization to 'JWT'
+              Authorization: `JWT ${this.$store.state.jwt}`,
+              'Content-Type': 'application/json'
+            },
+            xhrFields: {
+              withCredentials: true
+            }
+          }
+          this.$store.commit("setAuthUser",
+            {authUser: response.data, isAuthenticated: true}
+          )
+          this.$router.push({name: 'dashboard-user'})
+        })
+        .catch((error) => {
+          console.log(error);
+          console.debug(error);
+          console.dir(error);
+        })
+    },
+    logoutAction(){
+      this.$store.commit('removeToken')
+    }
+  },
+
   mutations: {
     setAuthUser(state, {
       authUser,
@@ -50,6 +89,12 @@ export default new Vuex.Store({
       // TODO: For security purposes, take localStorage out of the project.
       localStorage.removeItem('token');
       state.jwt = null;
+    }
+  },
+
+  getters: {
+    getUser: state => {
+      return state.authUser
     }
   }
 })

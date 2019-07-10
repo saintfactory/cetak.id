@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Axios from 'axios'
+import axios from 'axios'
 
 /* eslint-disable */ 
 export default {
@@ -55,12 +55,18 @@ export default {
     //   }
     // }
     
+    // login(){
+    //   let username = this.username
+    //   let password = this.password
+    //   this.$store.dispatch('loginAction', { username, password })
+    // }
+
     login(){
       const payload = {
         username: this.username,
         password: this.password
       }
-      Axios.post(this.$store.state.endpoints.obtainJWT, payload)
+      axios.post(this.$store.state.endpoints.obtainJWT, payload)
         .then((response) => {
           this.$store.commit('updateToken', response.data.token)
           // get and set auth user
@@ -78,7 +84,7 @@ export default {
           this.$store.commit("setAuthUser",
             {authUser: response.data, isAuthenticated: true}
           )
-          this.$router.push({name: 'home'})
+          this.$router.push({name: 'dashboard-user'})
         })
         .catch((error) => {
           console.log(error);

@@ -19,5 +19,6 @@ urlpatterns = [
     path('api/auth/obtain_token/', obtain_jwt_token),
     path('api/auth/refresh_token/', refresh_jwt_token),
     path('admin/', admin.site.urls),
+    path('payments/', include('payments.urls')),
 
 ]
