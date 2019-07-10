@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.checkout_api_bri, name='bri'),
+    path('', views.checkout_api_permata, name='permata'),
 
 ]

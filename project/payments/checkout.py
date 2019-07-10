@@ -12,14 +12,3 @@ core = CoreApi(
     client_key='SB-Mid-client-61XuGAwQ8Bj8LxSS',
 
 )
-
-charge_api = core.charge({
-
-    'payment_type': 'bank_transfer',
-    'transaction_details': {
-
-        'order_id': 'order-id'+timestamp,
-        'gross_amount': 200000,
-    }
-
-})

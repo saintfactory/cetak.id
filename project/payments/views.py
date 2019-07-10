@@ -20,4 +20,16 @@ from . checkout import core
 def checkout_api_permata(request, format=None):
 
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    charge_api = core.charge({
+
+        'payment_type': 'bank_transfer',
+        'transaction_details': {
+
+            'order_id': 'order-id'+timestamp,
+            'gross_amount': 200000,
+        }
+
+    })
+
     return render(request, 'permata_checkout.html', context={'permata_va_number': charge_api['permata_va_number'], 'gross_amount': charge_api['gross_amount'], 'order_id': charge_api['order_id']})
