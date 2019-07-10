@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'corsheaders',
     'pwa',
+    'drf_yasg',
 
     # application directories
     'accounts',
@@ -171,6 +172,13 @@ REST_FRAMEWORK_CLASSES = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+
+    },
+
+    'DEFAULT_RENDERER_CLASSES' : {
+
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
 
     }
 

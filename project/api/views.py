@@ -3,7 +3,9 @@
 
 from django.shortcuts import render
 from django.contrib.auth import authenticate
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import cache_page
 
 from rest_framework import status, generics
 from rest_framework.decorators import api_view, permission_classes
@@ -31,12 +33,26 @@ class BoardList(generics.ListCreateAPIView):
 	queryset = Board.objects.all()
 	serializer_class = BoardSerializer
 
+	# Cache for requested url each 1 hour
+
+	@method_decorator(cache_page(60*1))
+	def dispatch(self, *args, **kwargs):
+
+		return super(BoardList, self).dispatch(*args, **kwargs)
+
 class BoardDetail(generics.RetrieveUpdateDestroyAPIView):
 
 	permission_classes = (AllowAny,)
 
 	queryset = Board.objects.all()
 	serializer_class = BoardSerializer
+
+	# Cache for requested url each 1 hour
+
+	@method_decorator(cache_page(60*1))
+	def dispatch(self, *args, **kwargs):
+
+		return super(BoardDetail, self).dispatch(*args, **kwargs)
 
 
 @api_view(['GET', 'POST'])
