@@ -6,7 +6,13 @@
       </a>
       <div class="dtc v-mid w-75 tr">
         <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">{{user}}</a>
-        <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="Logout">Logout</a>
+        <button 
+          class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" 
+          v-on:click="logout"
+          title="Logout"
+        >
+          Logout
+        </button>
       </div>
     </nav>
     <div class="dt w-100">
@@ -42,54 +48,22 @@
 
 <script>
 /* eslint-disable */ 
-// import print1 from '../../img/print1.png'
-// import print2 from '../../img/print2.png'
-// import print3 from '../../img/print3.png'
-// import print4 from '../../img/print4.png'
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 const url = 'http://127.0.0.1:8000/api/board/'
-// const items = [
-//     {
-//       id: 1,
-//       name: 'Acadia',
-//       location: 'Jakal Km 13,5',
-//       img: print1,
-//       alt: 'Print Profile'
-//     },
-//     {
-//       id: 2,
-//       name: 'Graphico',
-//       location: 'Jakal Km 14 UII',
-//       img: print2,
-//       alt: 'Print Profile'
-//     },
-//     {
-//       id: 3,
-//       name: 'Print Media',
-//       location: 'Jakal Km 14 UII',
-//       img: print3,
-//       alt: 'Print Profile'
-//     },
-//     {
-//       id: 4,
-//       name: 'Sprint FCPY',
-//       location: 'Jakal Km 14 UII',
-//       img: print4,
-//       alt: 'Print Profile'
-//     }
-//   ]
+
 export default {
   name: 'DashboardUser',  
   props: {
-    item: Object,
     board: Object
   },
   data() {
     return {
       //items,
       user: 'Hilman Luthfi',
-      boards: []
+      boards: [],
+      search: null
     }
   },
   mounted() {
@@ -103,5 +77,10 @@ export default {
         console.log(error)
       })
   },
+  methods: {
+    logout(){
+      this.$store.getters.getUser
+    }
+  }
 }
 </script>
