@@ -150,7 +150,8 @@
 </template>
 
 <script>
-
+/* eslint-disable */
+import axios from 'axios'
 export default {
   name: 'RegisterUser',
   data: () => ({
@@ -170,22 +171,33 @@ export default {
     job: false
   }),
   methods: {
-    registerUser:function(e){
-      if(this.nama && this.password == this.passwordConfirm && this.gender && this.email && this.job && this.telp){
-        return true
-      } else {
-        this.errors = [];
-        if(!this.nama){
-          this.errors.push("Nama tidak boleh kosong!")
-        }
-        if(!this.password){
-          this.errors.push("Password harus diisi!")
-        }
-        if(this.passwordConfirm != this.password){
-          this.errors.push("Password tidak sama!")
-        }
-        e.preventDefault();
+    // registerUser:function(e){
+    //   if(this.nama && this.password == this.passwordConfirm && this.gender && this.email && this.job && this.telp){
+    //     return true
+    //   } else {
+    //     this.errors = [];
+    //     if(!this.nama){
+    //       this.errors.push("Nama tidak boleh kosong!")
+    //     }
+    //     if(!this.password){
+    //       this.errors.push("Password harus diisi!")
+    //     }
+    //     if(this.passwordConfirm != this.password){
+    //       this.errors.push("Password tidak sama!")
+    //     }
+    //     e.preventDefault();
+    //   }
+    // }
+    registerUser: function(){
+      const payload = {
+        username: this.username,
+        password: this.password,
+        passwordConfirm: this.passwordConfirm
       }
+      axios.post(this.$store.state.endpoints.signup)
+        .then((response) => {
+          console.log(response.status)
+        })
     }
   }
 }

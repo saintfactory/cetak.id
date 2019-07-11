@@ -31,48 +31,10 @@ export default new Vuex.Store({
       // TODO: Remove hardcoding of dev endpoints
       obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
       refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
-      baseUrl: 'http://127.0.0.1:8000/api/auth/'
+      baseUrl: 'http://127.0.0.1:8000/api/auth/',
+      signup: 'http://127.0.0.1:8000/signup/'
     }
   },
-
-  actions: {
-    loginAction(){
-      const payload = {
-        username: this.username,
-        password: this.password
-      }
-      axios.post(this.state.endpoints.obtainJWT, payload)
-        .then((response) => {
-          this.$store.commit('updateToken', response.data.token)
-          console.log(response.status)
-          // get and set auth user
-          const base = {
-            baseURL: this.$store.state.endpoints.baseUrl,
-            headers: {
-              // Set your Authorization to 'JWT'
-              Authorization: `JWT ${this.$store.state.jwt}`,
-              'Content-Type': 'application/json'
-            },
-            xhrFields: {
-              withCredentials: true
-            }
-          }
-          this.$store.commit("setAuthUser",
-            {authUser: response.data, isAuthenticated: true}
-          )
-          this.$router.push({name: 'dashboard-user'})
-        })
-        .catch((error) => {
-          console.log(error);
-          console.debug(error);
-          console.dir(error);
-        })
-    },
-    logoutAction(){
-      this.$store.commit('removeToken')
-    }
-  },
-
   mutations: {
     setAuthUser: (state, {
       authUser,
@@ -92,7 +54,6 @@ export default new Vuex.Store({
       state.jwt = null;
     }
   },
-
   getters: {
     getUser: state => {
       return state.jwt
