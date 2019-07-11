@@ -18,6 +18,7 @@ yarn-error.log*
 .vscode
 *.py
 *.py*
+*.pyc
 *.suo
 *.ntvs*
 *.njsproj
