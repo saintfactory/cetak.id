@@ -37,13 +37,14 @@ export default new Vuex.Store({
 
   actions: {
     loginAction(){
-      // const payload = {
-      //   username: this.username,
-      //   password: this.password
-      // }
-      axios.post(this.state.endpoints.obtainJWT)
+      const payload = {
+        username: this.username,
+        password: this.password
+      }
+      axios.post(this.state.endpoints.obtainJWT, payload)
         .then((response) => {
           this.$store.commit('updateToken', response.data.token)
+          console.log(response.status)
           // get and set auth user
           const base = {
             baseURL: this.$store.state.endpoints.baseUrl,
@@ -73,19 +74,19 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setAuthUser(state, {
+    setAuthUser: (state, {
       authUser,
       isAuthenticated
-    }) {
+    }) => {
       Vue.set(state, 'authUser', authUser)
       Vue.set(state, 'isAuthenticated', isAuthenticated)
     },
-    updateToken(state, newToken) {
+    updateToken: (state, newToken) => {
       // TODO: For security purposes, take localStorage out of the project.
       localStorage.setItem('token', newToken);
       state.jwt = newToken;
     },
-    removeToken(state) {
+    removeToken: (state) => {
       // TODO: For security purposes, take localStorage out of the project.
       localStorage.removeItem('token');
       state.jwt = null;
@@ -94,7 +95,7 @@ export default new Vuex.Store({
 
   getters: {
     getUser: state => {
-      return state.authUser
+      return state.jwt
     }
   }
 })

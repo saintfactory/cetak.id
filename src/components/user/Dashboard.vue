@@ -8,7 +8,7 @@
         <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">{{user}}</a>
         <button 
           class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" 
-          v-on:click="logout"
+          @click="logout"
           title="Logout"
         >
           Logout
@@ -60,7 +60,6 @@ export default {
   },
   data() {
     return {
-      //items,
       user: 'Hilman Luthfi',
       boards: [],
       search: null
@@ -78,8 +77,9 @@ export default {
       })
   },
   methods: {
-    logout(){
-      this.$store.getters.getUser
+    logout(user){
+      this.$store.commit('removeToken', user)
+      this.$router.push({name: 'login'})
     }
   }
 }

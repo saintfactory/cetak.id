@@ -11,10 +11,8 @@ Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 const state = {
   authUser: {},
   isAuthenticated: false,
-  jwt: localStorage.getItem('t'),
+  jwt: localStorage.getItem('token'),
   endpoints: {
-    // obtainJWT: 'http://0.0.0.0:10000/auth/obtain_token',
-    // refreshJWT: 'http://0.0.0.0:10000/auth/refresh_token'
     obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
     refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
     baseUrl: 'http://127.0.0.1:8000/api/auth/'
@@ -22,72 +20,51 @@ const state = {
 }
 
 const mutations = {
-  setAuthUser(state, {
+  setAuthUser: (state, {
     authUser,
     isAuthenticated
-  }){
+  }) => {
     Vue.set(state, 'authUser', authUser)
     Vue.set(state, 'isAuthenticated', isAuthenticated)
   },
-  updateToken(state, newToken){
-    localStorage.setItem('t', newToken)
-    state.jwt = newToken
+  updateToken: (state, newToken) => {
+    // TODO: For security purposes, take localStorage out of the project.
+    localStorage.setItem('token', newToken);
+    state.jwt = newToken;
   },
-  removeToken(state){
-    localStorage.removeItem('t')
-    state.jwt = null
+  removeToken: (state) => {
+    // TODO: For security purposes, take localStorage out of the project.
+    localStorage.removeItem('token');
+    state.jwt = null;
   }
 }
 
-// const actions = {
-//   obtainToken(email, password){
-//     const payload = {
-//       email: email,
-//       password: password
-//     }
-
-//     Axios.post(this.state.endpoints.obtainJWT, payload)
-//       .then((response) => {
-//         this.commit('updateToken', response.data.token)
-//       })
-//       .catch((error) => {
-//         console.log(error)
-//       })
-//   },
-//   refreshToken(){
-//     const payload = {
-//       token: this.state.jwt
-//     }
-
-//     Axios.post(this.state.endpoints.refreshJWT, payload)
-//       .then((response) => {
-//         this.commit('updateToken', response.data.token)
-//       })
-//       .catch((error) => {
-//         console.log(error)
-//       })
-//   },
-//   inspectToken(){
-//     const token = this.state.jwt
-//     if(token){
-//       const decoded = jwt_decode(token)
-//       const exp = decoded.exp
-//       const orig_iat = decoded.orig_iat
-
-//       if(exp - (Date.now()/1000) < 1800 && (Date.now()/1000) - orig_iat < 628200){
-//         this.dispatch('refreshToken')
-//       } else if (exp - (Date.now()/1000) < 1800){
-//         //Do nothing, don't refresh
-//       } else {
-//         //user re-login
-//       }
-//     }
-//   }
-// }
+const actions = {
+  loginAction: () => {
+    const payload = {
+      username: this.username,
+      password: this.password
+    }
+    Axios.post(this.state.endpoints.obtainJWT, payload)
+      .then((response) => {
+        this.$store.commit('updateToken', response.data.token)
+        // get and set auth user
+        this.$store.commit("setAuthUser",
+          {authUser: response.data, isAuthenticated: true}
+        )
+        this.$router.push({name: 'dashboard-user'})
+      })
+      .catch((error) => {
+        console.log(error);
+        console.debug(error);
+        console.dir(error);
+      })
+  }
+}
 
 export default {
   namespaced: true,
   state,
   mutations,
-  //actions
+  actions
 }
