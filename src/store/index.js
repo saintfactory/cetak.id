@@ -50,5 +50,11 @@ export default new Vuex.Store({
     isLoggedIn: state => {
       return state.isAuthenticated === true
     }
+  },
+
+  actions: {
+    fetchTokenActions: ({commit})=> {
+      commit('updateToken', localStorage.getItem('token'))
+    }
   }
 })

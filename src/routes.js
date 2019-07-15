@@ -9,6 +9,10 @@ import DashboardPartnership from './components/partnership/Dashboard.vue'
 import DashboardUser from './components/user/Dashboard.vue'
 
 const routes = [
+    {
+        path: '*',
+        redirect: '/login'
+    },
     { 
         path: '/', 
         name: 'home',
