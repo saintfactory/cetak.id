@@ -50,12 +50,15 @@ export default {
         .then((response) => {
           this.$store.commit('updateToken', response.data.token)
           this.$store.commit("setAuthUser",
-            {authUser: response.data, isAuthenticated: true}
+            { 
+              authUser: response.data, 
+              isAuthenticated: true
+            }
           )
           this.$router.push({name: 'dashboard-user'})
         })
         .catch((error) => {
-          //erase this when production
+          //NOTE: erase this when production
           console.log(error);
           console.debug(error);
           console.dir(error);

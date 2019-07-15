@@ -1,16 +1,4 @@
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
-/* eslint-disable */ 
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-// import auth from './modules/auth'
-
-// Vue.use(Vuex)
-
-// export default new Vuex.Store({
-//     modules: {
-//         auth
-//     }
-// })
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -35,6 +23,7 @@ export default new Vuex.Store({
       signup: 'http://127.0.0.1:8000/signup/'
     }
   },
+
   mutations: {
     setAuthUser: (state, {
       authUser,
@@ -54,9 +43,13 @@ export default new Vuex.Store({
       state.jwt = null;
     }
   },
+  
   getters: {
     getUser: state => {
       return state.jwt
+    },
+    isLoggedIn: state => {
+      return state.isAuthenticated === true
     }
   }
 })

@@ -50,7 +50,7 @@ const routes = [
         path: '/dashboard-user',
         name: 'dashboard-user',
         component: DashboardUser
-    }
+    },
 ];
 
 export default routes;
