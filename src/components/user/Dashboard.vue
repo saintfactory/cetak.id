@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-user">
+
     <nav class="dt w-100 border-box pa3 ph5-ns">
       <a class="dtc v-mid mid-gray link dim w-25" href="/" title="Home">
         <img src="../../assets/img/logo.png" class="logo" alt="Logo Cetak.id">
@@ -15,6 +16,7 @@
           </a>
       </div>
     </nav>
+
     <div class="dt w-100 mv3">
       <div class="dtc w-50-ns w-100">
         <input type="text" v-model="search" placeholder="Cari tempat cetak dokumen favoritmu" id="input-search" class="br3 pa2 w-80 mh4"/>
@@ -24,6 +26,7 @@
         <input type="text" placeholder="Yogyakarta" id="input-search-location" class="pa2 w-70" />
       </div>
     </div>
+
     <div class="flex pa2 justify-between ph5" >
       <div class="fl w-50 w-25-m w-20-l pa2 " v-for="board in boards" :key="board.id">
         <a href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music" class="db link dim tc grow dashboard--card">
@@ -37,6 +40,7 @@
         </a>
       </div>
     </div>   
+    
   </div>
 </template>
 

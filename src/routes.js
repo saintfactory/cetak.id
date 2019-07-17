@@ -7,6 +7,7 @@ import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
 import DashboardPartnership from './components/partnership/Dashboard.vue'
 import DashboardUser from './components/user/Dashboard.vue'
+import Order from './components/user/Order.vue'
 
 const routes = [
     {
@@ -55,6 +56,11 @@ const routes = [
         name: 'dashboard-user',
         component: DashboardUser
     },
+    {
+        path: '/order',
+        name: 'order',
+        component: Order
+    }
 ];
 
 export default routes;
