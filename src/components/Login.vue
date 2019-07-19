@@ -20,7 +20,7 @@
       <input 
         type="button" 
         class="f6 grow no-underline br-pill ph3 pv2 mv2 b mb2 dib white" 
-        v-on:click="login()" 
+        @click="login()" 
         value="Login" 
       />
     </form>
@@ -31,7 +31,6 @@
 
 <script>
 import axios from 'axios'
-
 /* eslint-disable */ 
 export default {
   name: 'Login',
@@ -42,25 +41,6 @@ export default {
     }
   },
   methods: {
-    // login() {
-    //   if (this.input.email !== "" && this.input.password != "") {
-    //     if (this.input.email == this.$parent.mockAccount.email && this.input.password == this.$parent.mockAccount.password) {
-    //       this.$emit("authenticated", true);
-    //       this.$router.replace({ name:"dashboard-partnership" });
-    //     } else {
-    //       alert("The username or password is incorrect")
-    //     }
-    //   } else {
-    //     alert("A email and password must be present")
-    //   }
-    // }
-    
-    // login(){
-    //   let username = this.username
-    //   let password = this.password
-    //   this.$store.dispatch('loginAction', { username, password })
-    // }
-
     login(){
       const payload = {
         username: this.username,
@@ -69,29 +49,25 @@ export default {
       axios.post(this.$store.state.endpoints.obtainJWT, payload)
         .then((response) => {
           this.$store.commit('updateToken', response.data.token)
-          // get and set auth user
-          const base = {
-            baseURL: this.$store.state.endpoints.baseUrl,
-            headers: {
-              // Set your Authorization to 'JWT'
-              Authorization: `JWT ${this.$store.state.jwt}`,
-              'Content-Type': 'application/json'
-            },
-            xhrFields: {
-              withCredentials: true
-            }
-          }
           this.$store.commit("setAuthUser",
-            {authUser: response.data, isAuthenticated: true}
+            { 
+              authUser: response.data, 
+              isAuthenticated: true
+            }
           )
           this.$router.push({name: 'dashboard-user'})
         })
         .catch((error) => {
+          //NOTE: erase this when production
           console.log(error);
           console.debug(error);
           console.dir(error);
+          alert("The username or password is incorrect");
         })
     }
+    // login(){
+    //   this.$store.dispatch('login')
+    // }
   }
 }
 </script>

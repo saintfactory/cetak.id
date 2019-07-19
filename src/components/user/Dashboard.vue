@@ -1,38 +1,35 @@
 <template>
   <div class="dashboard-user">
+
     <nav class="dt w-100 border-box pa3 ph5-ns">
       <a class="dtc v-mid mid-gray link dim w-25" href="/" title="Home">
         <img src="../../assets/img/logo.png" class="logo" alt="Logo Cetak.id">
       </a>
       <div class="dtc v-mid w-75 tr">
-        <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">{{user}}</a>
-        <button 
-          class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" 
-          v-on:click="logout"
-          title="Logout"
-        >
-          Logout
-        </button>
+          <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">
+            <i class="fas fa-user"></i> 
+            {{user}}
+          </a>
+          <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" @click="logout" title="Logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
       </div>
     </nav>
-    <div class="dt w-100">
-      <input 
-        type="text" 
-        v-model="search" 
-        placeholder="Cari tempat cetak dokumen favoritmu" 
-        class="dtc w-50-ns w-100 br3 input"
-      />
-      <!-- <label for="search-location" class="f7">Cari lokasi terdekatmu</label> -->
-      <input 
-        id="search-location"
-        type="text" 
-        class="dtc w-40-ns w-100 ml3"
-      />
+
+    <div class="dt w-100 mv3">
+      <div class="dtc w-50-ns w-100">
+        <input type="text" v-model="search" placeholder="Cari tempat cetak dokumen favoritmu" id="input-search" class="br3 pa2 w-80 mh4"/>
+      </div>
+      <div class="dtc w-40-ns w-100 ml3">
+        <i class="fas fa-map-marker-alt"></i>
+        <input type="text" placeholder="Yogyakarta" id="input-search-location" class="pa2 w-70" />
+      </div>
     </div>
+
     <div class="flex pa2 justify-between ph5" >
       <div class="fl w-50 w-25-m w-20-l pa2 " v-for="board in boards" :key="board.id">
         <a href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music" class="db link dim tc grow dashboard--card">
-          <!-- <img :src="board.img" :alt="board.alt" class="w-100 db"/> -->
           <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-100 db"/>
           <dl class="mt2 f6 lh-copy ph3">
             <dt class="clip">Title</dt>
@@ -43,6 +40,7 @@
         </a>
       </div>
     </div>   
+    
   </div>
 </template>
 
@@ -60,7 +58,6 @@ export default {
   },
   data() {
     return {
-      //items,
       user: 'Hilman Luthfi',
       boards: [],
       search: null
@@ -70,6 +67,8 @@ export default {
     axios.get(url)
       .then(response => {
         this.boards = response.data
+        this.$store.commit('setAuthUser')
+        this.$store.getters('isLoggedIn')
         console.log(response.status)
         console.log(response.data)
       })
@@ -78,9 +77,36 @@ export default {
       })
   },
   methods: {
-    logout(){
-      this.$store.getters.getUser
+    logout(user){
+      this.$store.commit('removeToken', user)
+      this.$router.push({name: 'login'})
     }
   }
 }
 </script>
+
+<style scoped>
+  #input-search {
+    border: 1px solid #4286B7;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+  }
+
+  #input-search-location {
+    border: 0px none;
+    border-bottom: 2px solid #4286B7;
+  }
+
+  .fa-map-marker-alt {
+    color: red;
+  }
+
+  .fa-sign-out-alt {
+    color: red;
+  }
+
+  .fa-user {
+    color: #4286B7;
+  }  
+</style>

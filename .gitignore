@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
-/dist
+dist/
+project/
+v8-compile-cache-0/
 
 # local env files
 .env.local
@@ -14,6 +16,9 @@ yarn-error.log*
 # Editor directories and files
 .idea
 .vscode
+*.py
+*.py*
+*.pyc
 *.suo
 *.ntvs*
 *.njsproj

@@ -11,8 +11,13 @@ import Profil from './components/partnership/Profil.vue'
 import Produk from './components/partnership/Produk.vue'
 import Pesanan from './components/partnership/Pesanan.vue'
 import Dicetak from './components/partnership/Dicetak.vue'
+import Order from './components/user/Order.vue'
 
 const routes = [
+    {
+        path: '*',
+        redirect: '/login'
+    },
     { 
         path: '/', 
         name: 'home',
@@ -79,6 +84,11 @@ const routes = [
     },
     
 
+    {
+        path: '/order',
+        name: 'order',
+        component: Order
+    }
 ];
 
 export default routes;
