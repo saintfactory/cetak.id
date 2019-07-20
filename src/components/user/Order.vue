@@ -154,12 +154,9 @@ export default {
 	#input-message {
 		border: 0.5px solid #a8a8a8;
 		box-sizing: border-box;
-    position: absolute;
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
 		min-width: 100%;
 		min-height: 170px;
-    z-index: -1;
-
 	}
 
   #input-search-location {
