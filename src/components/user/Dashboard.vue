@@ -29,7 +29,7 @@
 
     <div class="flex pa2 justify-between ph5" >
       <div class="fl w-50 w-25-m w-20-l pa2 " v-for="board in boards" :key="board.id">
-        <a href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music" class="db link dim tc grow dashboard--card">
+        <router-link to="/order" class="db link dim tc grow dashboard--card">
           <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-100 db"/>
           <dl class="mt2 f6 lh-copy ph3">
             <dt class="clip">Title</dt>
@@ -37,10 +37,9 @@
             <dt class="clip">Artist</dt>
             <dd class="ml0 gray truncate w-100 tl">{{board.description}}</dd>
           </dl>
-        </a>
+        </router-link>
       </div>
     </div>   
-    
   </div>
 </template>
 

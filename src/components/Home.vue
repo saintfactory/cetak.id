@@ -79,5 +79,8 @@ export default {
 <style scoped>
 	.hero--button {
 		color: #C7E87C;
+		border: 3px solid #C7E87C;
+		box-shadow: 0px 4px 30px #C7E87C;
+		box-sizing: border-box;
 	}
 </style>

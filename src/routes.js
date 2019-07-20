@@ -54,13 +54,13 @@ const routes = [
     {
         path: '/dashboard-user',
         name: 'dashboard-user',
-        component: DashboardUser
+        component: DashboardUser,
     },
     {
         path: '/order',
-        name: 'order',
         component: Order
     }
+    
 ];
 
 export default routes;

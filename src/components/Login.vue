@@ -7,13 +7,13 @@
       <input 
         type="text" 
         name="username" 
-        class="ma2 pa2 bg-transparent hover-bg-blue hover-white" 
+        class="ma2 pa2 bg-transparent" 
         v-model="username" 
       /><br>
       <label class="db fw6 lh-copy f6 black tl" for="password">Password</label>
       <input 
         type="password" 
-        class="ma2 pa2 bg-transparent hover-bg-blue hover-white" 
+        class="ma2 pa2 bg-transparent " 
         name="password" 
         v-model="password"  
       /><br>
@@ -65,9 +65,6 @@ export default {
           alert("The username or password is incorrect");
         })
     }
-    // login(){
-    //   this.$store.dispatch('login')
-    // }
   }
 }
 </script>
@@ -88,24 +85,25 @@ form {
   margin: 0 auto;
   padding: 2%;
   border-radius: 25px;
+  box-shadow: 0px 4px 70px rgba(199, 232, 124, 0.7);
 }
 
 form span {
-    color: #4286B7;
-    margin-bottom: 25px;
-    padding-bottom: 25px;
+  color: #4286B7;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
 }
 
 input[type=text], input[type=password] {
-    margin-bottom: 5%;
-    border: none;
-    border-bottom: 1px solid black; 
-    width: 100%;
+  margin-bottom: 5%;
+  border: none;
+  border-bottom: 1px solid black; 
+  width: 100%;
 }
 
 input[type=button] {
-    background-color: #4286B7;
-    border: none;
-    width: 40%;
+  background-color: #4286B7;
+  border: 3px solid #C7E87C;
+  width: 40%;
 }
 </style>
