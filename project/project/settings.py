@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'accounts',
     'api',
     'boards',
-    'partnership',
+    #'partnership',
     'payments',
 
 ]
