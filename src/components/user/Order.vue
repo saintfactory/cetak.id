@@ -108,21 +108,21 @@ export default {
 
 <style scoped>
 	#input-search {
-    border: 1px solid #4286B7;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-  }
+        border: 1px solid #4286B7;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+    }
 
 	#input-file {
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
 		min-width: 600px;
 		min-height: 350px;
-    overflow: hidden;
-    position: absolute;
-    z-index: 1;
-    display: inline;
-    opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        display: inline;
+        opacity: 0;
 	}
 
 	#input-message {
@@ -134,54 +134,54 @@ export default {
 		z-index: -1;
 	}
 
-  #input-search-location {
-    border: 0px none;
-    border-bottom: 2px solid #4286B7;
-  }
+    #input-search-location {
+        border: 0px none;
+        border-bottom: 2px solid #4286B7;
+    }
 
-  #label-file {
-    text-align: center;
-    display: inline-block;
-    opacity: 0.3;
-    padding: 20%;
-  }
+    #label-file {
+        text-align: center;
+        display: inline-block;
+        opacity: 0.3;
+        padding: 20%;
+    }
 
-  #label-message {
-    text-align: center;
-    display: inline-block;
-    opacity: 0.3;
-    padding: 20%;
-    font-size: 28px;
-		z-index: 1;
-  }
+    #label-message {
+        text-align: center;
+        display: inline-block;
+        opacity: 0.3;
+        padding: 20%;
+        font-size: 28px;
+        z-index: 1;
+    }
 
 	#input-message::placeholder {
-		text-align: center;
-    display: inline-block;
-    opacity: 0.8;
-    padding: 20%;
-    font-size: 28px;
+        text-align: center;
+        display: inline-block;
+        opacity: 0.8;
+        padding: 20%;
+        font-size: 28px;
 		z-index: 1;
 	}
 
-  #file-box {
-    font-size: 28px;
-    border: 0.5px solid #a8a8a8;
+    #file-box {
+        font-size: 28px;
+        border: 0.5px solid #a8a8a8;
 		box-sizing: border-box;
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
 		min-width: 100%;
 		min-height: 350px;
 		z-index: -1;
-  }
+    }
 
 	input[type="text"]:focus {
-    outline: none;
-    border: 1px solid #aaa;
-  }
+        outline: none;
+        border: 1px solid #aaa;
+    }
 
 	input[type=button] {
-  	background-color: #4286B7;
-    border: 3px solid #C7E87C;
+        background-color: #4286B7;
+        border: 3px solid #C7E87C;
 		float: right;
 		margin-bottom: 50px;
 		outline: none;
@@ -195,15 +195,15 @@ export default {
 		width: 100%;
 	}
 	
-  .fa-map-marker-alt {
-    color: red;
-  }
+    .fa-map-marker-alt {
+        color: red;
+    }
 
-  .fa-sign-out-alt {
-    color: red;
-  }
+    .fa-sign-out-alt {
+        color: red;
+    }
 
-  .fa-user {
-    color: #4286B7;
-  }  
+    .fa-user {
+        color: #4286B7;
+    }  
 </style>
