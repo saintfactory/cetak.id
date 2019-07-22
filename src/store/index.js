@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import board from './modules/board'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 export default new Vuex.Store({
   state: {
     authUser: {},
+    board:[],
     isAuthenticated: false,
     jwt: localStorage.getItem('token'),
     endpoints: {
@@ -20,7 +22,8 @@ export default new Vuex.Store({
       obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
       refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
       baseUrl: 'http://127.0.0.1:8000/api/auth/',
-      signup: 'http://127.0.0.1:8000/signup/'
+      signup: 'http://127.0.0.1:8000/signup/',
+      board: 'http://127.0.0.1:8000/api/board/'
     }
   },
   mutations: {
@@ -40,6 +43,19 @@ export default new Vuex.Store({
       // TODO: For security purposes, take localStorage out of the project.
       localStorage.removeItem('token');
       state.jwt = null;
+    },
+    updateBoard: (state) => {
+      axios.get(state.endpoints.board)
+        .then(response => {
+            state.boards = response.data
+            // this.$store.commit('setAuthUser')
+            // this.$store.getters('isLoggedIn')
+            console.log(response.status)
+            console.log(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
   },
   
@@ -56,5 +72,9 @@ export default new Vuex.Store({
     fetchTokenActions: ({commit})=> {
       commit('updateToken', localStorage.getItem('token'))
     }
+  },
+
+  modules: {
+    board
   }
 })

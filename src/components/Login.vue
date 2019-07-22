@@ -7,13 +7,13 @@
       <input 
         type="text" 
         name="username" 
-        class="ma2 pa2 bg-transparent" 
+        class="ma2 pa2 input-reset" 
         v-model="username" 
       /><br>
       <label class="db fw6 lh-copy f6 black tl" for="password">Password</label>
       <input 
         type="password" 
-        class="ma2 pa2 bg-transparent " 
+        class="ma2 pa2 input-reset" 
         name="password" 
         v-model="password"  
       /><br>
@@ -55,7 +55,7 @@ export default {
               isAuthenticated: true
             }
           )
-          this.$router.push({name: 'dashboard-user'})
+          this.$router.push({name: 'list-vendor'})
         })
         .catch((error) => {
           //NOTE: erase this when production
@@ -94,16 +94,27 @@ form span {
   padding-bottom: 25px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], 
+input[type=password] {
   margin-bottom: 5%;
   border: none;
-  border-bottom: 1px solid black; 
+  border-bottom: 1px solid #aaa; 
   width: 100%;
+  color: #333;
+}
+
+input[type=text]:focus, 
+input[type=password]:focus {
+  border-bottom: 1px solid #000; 
+  outline: none;
 }
 
 input[type=button] {
   background-color: #4286B7;
   border: 3px solid #C7E87C;
   width: 40%;
+  margin: 0 auto;
+  float: none;
+  outline: none;
 }
 </style>

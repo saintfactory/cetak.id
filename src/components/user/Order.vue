@@ -1,33 +1,5 @@
 <template>
 	<div>
-		<nav class="dt w-100 border-box pa3 ph5-ns">
-		<a class="dtc v-mid mid-gray link dim w-25" href="/" title="Home">
-			<img src="../../assets/img/logo.png" class="logo" alt="Logo Cetak.id">
-		</a>
-		<div class="dtc v-mid w-75 tr">
-			<a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#" title="User">
-				<i class="fas fa-user"></i> 
-				{{user}}
-			</a>
-			<a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" @click="logout" title="Logout">
-				<i class="fas fa-sign-out-alt"></i>
-				Logout
-			</a>
-		</div>
-		</nav>
-
-		<div class="mw9 center ph3-ns">
-			<div class="cf ph2-ns">
-				<div class="fl w-100 w-50-ns pa2">
-					<input type="text" v-model="search" placeholder="Cari tempat cetak dokumen favoritmu" id="input-search" class="br3 pa2 w-80"/>
-				</div>
-				<div class="fr w-100 w-50-ns pa2">
-					<i class="fas fa-map-marker-alt"></i>
-					<input type="text" placeholder="Yogyakarta" id="input-search-location" class="pa2 w-70" />
-				</div>
-			</div>
-		</div>
-
 		<div class="mw9 center ph3-ns mt5-ns">
 			<div class="cf ph2-ns">
 				<div class="fl w-100 w-40-ns pa2 mh4 tl">
@@ -84,12 +56,11 @@
 					<p class="b f4 mv3 pt3 tl">Upload dokumenmu disini</p>
           <div>
             <div id="file-box">
-              <input id="input-file" placeholder="Tambahkan File" class="db mv3" type="file" name="file" />
+              <input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
               <p id="label-file">Lepaskan Filemu disini</p>
             </div>
           </div>
-					<input id="input-message" name="message" class="db mv4" type="text" />
-          <p class="label-message">Tambahkan Pesan</p>  
+					<input id="input-message" name="message" class="db mv4" type="text" placeholder="Tambahkan Pesan"/>
 					<p class="f4 b ttu tl">pembayaran</p>
 					<div class="flex justify-arround mb4">
 						<div class="w-25 pa3 mr2 tl">
@@ -109,12 +80,10 @@
 					<p class="f4 b ttu tl">total harga</p>
 					<p class="f4 b tl">Rp {{ total }}</p>
 					<hr>
-					<input type="button" value="Cetak Sekarang" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
+					<input type="button" @click="orderNow" value="Cetak Sekarang" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
 				</div>
 			</div>
 		</div>
-
-		
 	</div>
 </template>
 
@@ -127,6 +96,11 @@ export default {
 			name: 'Acadia Print',
 			location: 'Jl. Kaliurang km 9,3, Gandok, Yogyakarta',
 			total: '15.000,00'
+		}
+	},
+	methods: {
+		orderNow: () => {
+			this.$router.push({path: 'completed'})
 		}
 	}
 }
@@ -157,6 +131,7 @@ export default {
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
 		min-width: 100%;
 		min-height: 170px;
+		z-index: -1;
 	}
 
   #input-search-location {
@@ -176,8 +151,18 @@ export default {
     display: inline-block;
     opacity: 0.3;
     padding: 20%;
-    
+    font-size: 28px;
+		z-index: 1;
   }
+
+	#input-message::placeholder {
+		text-align: center;
+    display: inline-block;
+    opacity: 0.8;
+    padding: 20%;
+    font-size: 28px;
+		z-index: 1;
+	}
 
   #file-box {
     font-size: 28px;
@@ -189,11 +174,17 @@ export default {
 		z-index: -1;
   }
 
+	input[type="text"]:focus {
+    outline: none;
+    border: 1px solid #aaa;
+  }
+
 	input[type=button] {
-    background-color: #4286B7;
-    border: none;
+  	background-color: #4286B7;
+    border: 3px solid #C7E87C;
 		float: right;
 		margin-bottom: 50px;
+		outline: none;
 	}
 
 	input[type=number] {
