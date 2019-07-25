@@ -46,10 +46,10 @@ export default {
         username: this.username,
         password: this.password
       }
-      axios.post(this.$store.state.endpoints.obtainJWT, payload)
+      axios.post(this.$store.state.auth.endpoints.obtainJWT, payload)
         .then((response) => {
-          this.$store.commit('updateToken', response.data.token)
-          this.$store.commit("setAuthUser",
+          this.$store.commit('auth/updateToken', response.data.token)
+          this.$store.commit('auth/setAuthUser',
             { 
               authUser: response.data, 
               isAuthenticated: true

@@ -53,6 +53,10 @@ export default {
       this.$store.commit('removeToken', user)
       this.$router.push({name: 'login'})
     }
+  },
+  mounted() {
+    this.$store.commit('setAuthUser')
+    this.$store.commit('updateToken')
   }
 }
 </script>

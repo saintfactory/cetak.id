@@ -10,6 +10,7 @@ Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 const state = {
   authUser: {},
+  users: [],
   isAuthenticated: false,
   jwt: localStorage.getItem('token'),
   endpoints: {
@@ -37,29 +38,41 @@ const mutations = {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.removeItem('token');
     state.jwt = null;
-  }
+  },
 }
 
 const actions = {
-  loginAction: () => {
-    const payload = {
-      username: this.username,
-      password: this.password
-    }
-    Axios.post(this.state.endpoints.obtainJWT, payload)
+  loginAction: ({ commit }) => {
+    Axios.post(state.endpoints.obtainJWT)
       .then((response) => {
-        this.$store.commit('updateToken', response.data.token)
-        // get and set auth user
-        this.$store.commit("setAuthUser",
-          {authUser: response.data, isAuthenticated: true}
+        commit('updateToken', response.data.token)
+        commit('setAuthUser',
+          { 
+            authUser: response.data, 
+            isAuthenticated: true
+          }
         )
-        this.$router.push({name: 'dashboard-user'})
+        this.$router.push({name: 'list-vendor'})
       })
       .catch((error) => {
+        //NOTE: erase this when production
         console.log(error);
         console.debug(error);
         console.dir(error);
+        alert("The username or password is incorrect");
       })
+  },
+  fetchTokenActions: ({commit})=> {
+    commit('updateToken', localStorage.getItem('token'))
+  }
+}
+
+const getters = {
+  getUser: state => {
+    return state.jwt
+  },
+  isLoggedIn: state => {
+    return state.isAuthenticated === true
   }
 }
 
@@ -67,5 +80,6 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
