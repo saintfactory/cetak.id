@@ -1,7 +1,6 @@
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
 import Vue from 'vue'
 import Axios from 'axios'
-//import jwt_decode from 'jwt-decode'
 import 'es6-promise/auto'
 
 // In order that Axios work nice with Django CSRF
@@ -10,6 +9,7 @@ Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 const state = {
   authUser: {},
+  users: [],
   isAuthenticated: false,
   jwt: localStorage.getItem('token'),
   endpoints: {
@@ -28,44 +28,50 @@ const mutations = {
     Vue.set(state, 'authUser', authUser)
     Vue.set(state, 'isAuthenticated', isAuthenticated)
   },
+  
   updateToken: (state, newToken) => {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.setItem('token', newToken);
     state.jwt = newToken;
   },
+
   removeToken: (state) => {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.removeItem('token');
     state.jwt = null;
-  }
+  },
 }
 
 const actions = {
-  loginAction: () => {
-    const payload = {
-      username: this.username,
-      password: this.password
-    }
-    Axios.post(this.state.endpoints.obtainJWT, payload)
+  loginAction: ({ commit }) => {
+    Axios.post(state.endpoints.obtainJWT)
       .then((response) => {
-        this.$store.commit('updateToken', response.data.token)
-        // get and set auth user
-        this.$store.commit("setAuthUser",
-          {authUser: response.data, isAuthenticated: true}
+        commit('updateToken', response.data.token)
+        commit('setAuthUser',
+          { 
+            authUser: response.data, 
+            isAuthenticated: true
+          }
         )
-        this.$router.push({name: 'dashboard-user'})
+        this.$router.push({name: 'list-vendor'})
       })
       .catch((error) => {
+        //NOTE: erase this when production
         console.log(error);
         console.debug(error);
         console.dir(error);
+        alert("The username or password is incorrect");
       })
-  }
+  },
+
+  fetchTokenActions: ({commit})=> {
+    commit('updateToken', localStorage.getItem('token'))
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }

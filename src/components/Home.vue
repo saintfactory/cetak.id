@@ -72,7 +72,7 @@ export default {
 			// alert("Welcome to Cetak.id! " + Date());
 			document.getElementsByClassName("hero--button").scrollspy({target: ".home", offset: 100});
 		}
-	}
+	},
 }
 </script>
 

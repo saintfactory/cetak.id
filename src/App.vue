@@ -11,9 +11,14 @@
 <script>
 /* eslint-disable */ 
 import './styles.css'
+import { mapState } from 'vuex';
 
 export default {
   name: 'app',
+  computed: mapState('auth', ['authUser','isAuthenticated']),
+  mounted() {
+    this.$store.commit('auth/updateToken')
+  },
   // data() {
   //   return {
   //     authenticated: false,
@@ -37,6 +42,7 @@ export default {
   //       this.authenticated = false;
   //   }
   // }
+  
 }
 </script>
 

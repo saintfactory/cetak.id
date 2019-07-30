@@ -10,7 +10,7 @@
             <i class="fas fa-user"></i> 
             {{user}}
           </a>
-          <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" @click="logout" title="Logout">
+          <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns pointer" @click="logout" title="Logout">
             <i class="fas fa-sign-out-alt"></i>
             Logout
           </a>
@@ -26,60 +26,53 @@
         <input type="text" placeholder="Yogyakarta" id="input-search-location" class="pa2 w-70" />
       </div>
     </div>
+    <div>
+      <router-view></router-view>
+    </div>
 
-    <div class="flex pa2 justify-between ph5" >
-      <div class="fl w-50 w-25-m w-20-l pa2 " v-for="board in boards" :key="board.id">
-        <router-link to="/order" class="db link dim tc grow dashboard--card">
-          <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-100 db"/>
-          <dl class="mt2 f6 lh-copy ph3">
-            <dt class="clip">Title</dt>
-            <dd class="ml0 black truncate w-100 tl">{{board.name}}</dd>
-            <dt class="clip">Artist</dt>
-            <dd class="ml0 gray truncate w-100 tl">{{board.description}}</dd>
-          </dl>
-        </router-link>
-      </div>
-    </div>   
   </div>
 </template>
 
 <script>
 /* eslint-disable */ 
 import axios from 'axios'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex';
 
 const url = 'http://127.0.0.1:8000/api/board/'
 
 export default {
   name: 'DashboardUser',  
-  props: {
-    board: Object
-  },
   data() {
     return {
       user: 'Hilman Luthfi',
-      boards: [],
       search: null
     }
   },
-  mounted() {
-    axios.get(url)
-      .then(response => {
-        this.boards = response.data
-        this.$store.commit('setAuthUser')
-        this.$store.getters('isLoggedIn')
-        console.log(response.status)
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
+  computed: mapState('auth',['isAuthenticated']),
+
+  created() {
+    if(this.$store.state.isAuthenticated) {
+      this.$router.replace({ name: "login" });
+    }
   },
+
   methods: {
     logout(user){
-      this.$store.commit('removeToken', user)
+      this.$store.commit('auth/removeToken', user)
       this.$router.push({name: 'login'})
+      this.$store.commit('auth/setAuthUser',
+        { 
+          authUser: null, 
+          isAuthenticated: false
+        }
+      )
     }
+    
+  },
+
+  mounted() {
+    this.$store.commit('auth/updateToken')
   }
 }
 </script>
@@ -95,6 +88,11 @@ export default {
   #input-search-location {
     border: 0px none;
     border-bottom: 2px solid #4286B7;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+    border: 1px solid #aaa;
   }
 
   .fa-map-marker-alt {

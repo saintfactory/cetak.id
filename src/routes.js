@@ -12,6 +12,8 @@ import Produk from './components/partnership/Produk.vue'
 import Pesanan from './components/partnership/Pesanan.vue'
 import Dicetak from './components/partnership/Dicetak.vue'
 import Order from './components/user/Order.vue'
+import Completed from './components/user/Completed.vue'
+import ListVendor from './components/user/ListVendor.vue'
 
 const routes = [
     {
@@ -51,8 +53,7 @@ const routes = [
         component: CaraPrint 
     },
     {
-        path: "/dashboard-partnership/:id",
-        name: 'dashboard-partnership',
+        path: '/dashboard-partnership/:id',
         component: Dashboard,
         children: [
             {
@@ -78,16 +79,32 @@ const routes = [
         ]
     },
     {
-        path: '/dashboard-user',
-        name: 'dashboard-user',
+        path: '/dashboard-user/:id',
         component: DashboardUser,
+        children: [
+            {
+                path: '',
+                component: DashboardUser,
+                name: 'dashboard-user'
+            },
+            {
+                path: 'list-vendor',
+                component: ListVendor,
+                name: 'list-vendor'
+            },
+            {
+                path: 'order',
+                component: Order
+            },
+            {
+                path: 'completed',
+                name: 'completed',
+                component: Completed
+            }
+        ]
     },
     
-
-    {
-        path: '/order',
-        component: Order
-    }
+    
     
 ];
 
