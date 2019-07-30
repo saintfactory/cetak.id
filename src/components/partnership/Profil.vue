@@ -97,7 +97,7 @@
             <img class="mw4 mw-4-ns pa3" src="../../assets/img/business-card.png" alt />
           </div>
           <div class="fl w-60 w-60-ns measure identity-part">
-            <table class="pa3">
+            <table class="pa3 mt-3">
               <tr>
                 <td class="align">
                   <i class="f7 fas fa-circle"></i>
@@ -128,7 +128,7 @@
               </tr>
             </table>
             <input type="file" name="file" id="file" class="inputfile" />
-            <label class="w-40 w-50-ns pa2 ml3 fl f7" for="file">Pilih file</label>
+            <label class="w-40 w-50-ns pa2 ml3 mt-2 fl f7" for="file">Pilih file</label>
           </div>
         </div>
       </tr>
@@ -175,33 +175,7 @@
 </script>
 
 <style scoped>
-#side {
-  background-color: #4286b7;
-  position: fixed;
-  height: 100vh;
-  width: 15%;
-}
-.list {
-  list-style-type: none;
-  text-decoration: none;
-}
-.active .menu-list:hover {
-  background: rgba(50, 50, 50, 0.4) !important;
-}
 
-#content {
-  background-color: #eef6f7;
-  float: right;
-  min-height: 100vh;
-  width: 85%;
-}
-#content-main {
-  min-height: 80vh;
-}
-.fa-sort-down,
-.fa-bell {
-  color: #4286b7;
-}
 input {
   border: none;
 }
