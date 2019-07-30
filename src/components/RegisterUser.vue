@@ -4,19 +4,6 @@
     <span class="i white">Silahkan isi data tempat dengan benar</span>
     <form class="md-layout white tl" @submit="registerUser">
       <div class="dt w-100">
-        <input 
-          type="text"
-          v-model="username"
-          placeholder="username"
-        />
-        <input 
-          type="password"
-          v-model="password"
-        />
-        <input 
-          type="password"
-          v-model="passwordConfirm" 
-        />
         <div class="dtc ph3 w-50">
           <div class="db">
             <div class="ma3 di">

@@ -1,7 +1,6 @@
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
 import Vue from 'vue'
 import Axios from 'axios'
-//import jwt_decode from 'jwt-decode'
 import 'es6-promise/auto'
 
 // In order that Axios work nice with Django CSRF
@@ -29,11 +28,13 @@ const mutations = {
     Vue.set(state, 'authUser', authUser)
     Vue.set(state, 'isAuthenticated', isAuthenticated)
   },
+  
   updateToken: (state, newToken) => {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.setItem('token', newToken);
     state.jwt = newToken;
   },
+
   removeToken: (state) => {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.removeItem('token');
@@ -62,18 +63,10 @@ const actions = {
         alert("The username or password is incorrect");
       })
   },
+
   fetchTokenActions: ({commit})=> {
     commit('updateToken', localStorage.getItem('token'))
-  }
-}
-
-const getters = {
-  getUser: state => {
-    return state.jwt
   },
-  isLoggedIn: state => {
-    return state.isAuthenticated === true
-  }
 }
 
 export default {
@@ -81,5 +74,4 @@ export default {
   state,
   mutations,
   actions,
-  getters
 }

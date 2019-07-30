@@ -55,7 +55,7 @@ export default {
               isAuthenticated: true
             }
           )
-          this.$router.push({name: 'list-vendor'})
+          this.$router.replace({name: 'list-vendor'})
         })
         .catch((error) => {
           //NOTE: erase this when production

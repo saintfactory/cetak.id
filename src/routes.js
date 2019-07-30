@@ -82,7 +82,11 @@ const routes = [
         path: '/dashboard-user/:id',
         component: DashboardUser,
         children: [
-
+            {
+                path: '',
+                component: DashboardUser,
+                name: 'dashboard-user'
+            },
             {
                 path: 'list-vendor',
                 component: ListVendor,

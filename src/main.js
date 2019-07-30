@@ -16,21 +16,21 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   // to and from are both route objects. must call `next`.
-//   store.dispatch('fetchTokenActions')
-//   if(to.fullPath === '/login') {
-//     if(!store.state.jwt) {
-//       next('/dashboard-user/id/list-vendor')
-//     }
-//   }
-//   if(to.fullPath === '/dashboard-user/id/list-vendor') {
-//     if(store.state.jwt) {
-//       next('/login')
-//     }
-//   }
-//   next();
-// })
+router.beforeEach((to, from, next) => {
+  // to and from are both route objects. must call `next`.
+  store.dispatch('auth/fetchTokenActions')
+  if(to.fullPath === '/dashboard-user/id/list-vendor') {
+    if(!store.state.jwt) {
+      next('/login')
+    }
+  }
+  if(to.fullPath === '/login') {
+    if(store.state.jwt) {
+      next('/dashboard-user/id/list-vendor')
+    }
+  }
+  next();
+})
 
 new Vue({
   router,

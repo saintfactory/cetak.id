@@ -9,15 +9,15 @@
 						<p class="f4 b ttu mv4">detail pemesanan</p>	
 						<div class="pv2">
 							<label for="rangkap" class="f6 db lh-copy">Rangkap</label>
-							<input type="number" name="rangkap" id="rangkap" />		
+							<input type="number" name="rangkap" id="rangkap" v-model="rangkap" />		
 						</div>	
 						<div class="pv2">
 							<label for="halaman" class="f6 db lh-copy">Halaman</label>
-							<input type="number" name="halaman" id="halaman" />		
+							<input type="number" name="halaman" id="halaman" v-model="halaman" />		
 						</div>
 						<div class="pv2">
 							<label for="jenis-kertas" class="f6 db lh-copy">Jenis Kertas</label>
-							<select name="jenis-kertas" id="jenis-kertas">
+							<select name="jenis-kertas" id="jenis-kertas" v-model="jenisKertas">
 								<option value="a4">A4</option>
 								<option value="a3">A3</option>
 								<option value="a2">A2</option>
@@ -25,21 +25,21 @@
 						</div>
 						<div class="pv2">
 							<label for="jenis-print" class="f6 db lh-copy">Jenis Print</label>
-							<select name="jenis-print" id="jenis-print">
+							<select name="jenis-print" id="jenis-print" v-model="jenisPrint">
 								<option value="hitam-putih">Hitam Putih</option>
 								<option value="berwarna">Berwarna</option>
 							</select>
 						</div>
 						<div class="pv2">
 							<label for="finishing" class="f6 db lh-copy">Finishing</label>
-							<select name="finishing" id="finishing">
+							<select name="finishing" id="finishing" v-model="finishing">
 								<option value="jilid">Jilid</option>
 								<option value="hard-cover">Hard Cover</option>
 							</select>
 						</div>
 						<div class="pv2">
 							<label for="warna-cover" class="f6 db lh-copy">Warna Cover</label>
-							<select name="warna-cover" id="warna-cover">
+							<select name="warna-cover" id="warna-cover" v-model="warnaCover">
 								<option value="putih">Putih</option>
 								<option value="biru">Biru</option>
 								<option value="kuning">Kuning</option>
@@ -54,13 +54,13 @@
 					<h4 class="f2 tl">{{ name }}</h4>
 					<p class="lh-copy tl">{{ location }}</p>
 					<p class="b f4 mv3 pt3 tl">Upload dokumenmu disini</p>
-          <div>
-            <div id="file-box">
-              <input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
-              <p id="label-file">Lepaskan Filemu disini</p>
-            </div>
-          </div>
-					<input id="input-message" name="message" class="db mv4" type="text" placeholder="Tambahkan Pesan"/>
+					<div>
+						<div id="file-box">
+						<input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
+						<p id="label-file">Lepaskan Filemu disini</p>
+						</div>
+					</div>
+					<textarea id="input-message" name="message" class="db mv4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
 					<p class="f4 b ttu tl">pembayaran</p>
 					<div class="flex justify-arround mb4">
 						<div class="w-25 pa3 mr2 tl">
@@ -95,12 +95,19 @@ export default {
 			user: 'Hilman Luthfi',
 			name: 'Acadia Print',
 			location: 'Jl. Kaliurang km 9,3, Gandok, Yogyakarta',
-			total: '15.000,00'
+			total: '15.000,00',
+			rangkap: '',
+			halaman: '',
+			pesan: '',
+			jenisKertas: '',
+			jenisPrint: '',
+			finishing: '',
+			warnaCover: ''
 		}
 	},
 	methods: {
 		orderNow: () => {
-			this.$router.push({path: 'completed'})
+			this.$router.push({name: 'completed'})
 		}
 	}
 }

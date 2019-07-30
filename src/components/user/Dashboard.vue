@@ -36,7 +36,7 @@
 <script>
 /* eslint-disable */ 
 import axios from 'axios'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex';
 
 const url = 'http://127.0.0.1:8000/api/board/'
 
@@ -48,15 +48,31 @@ export default {
       search: null
     }
   },
-  methods: {
-    logout(user){
-      this.$store.commit('removeToken', user)
-      this.$router.push({name: 'login'})
+
+  computed: mapState('auth',['isAuthenticated']),
+
+  created() {
+    if(this.$store.state.isAuthenticated) {
+      this.$router.replace({ name: "login" });
     }
   },
+
+  methods: {
+    logout(user){
+      this.$store.commit('auth/removeToken', user)
+      this.$router.push({name: 'login'})
+      this.$store.commit('auth/setAuthUser',
+        { 
+          authUser: null, 
+          isAuthenticated: false
+        }
+      )
+    }
+    
+  },
+
   mounted() {
-    this.$store.commit('setAuthUser')
-    this.$store.commit('updateToken')
+    this.$store.commit('auth/updateToken')
   }
 }
 </script>
