@@ -43,28 +43,8 @@ const mutations = {
   },
 }
 
-const actions = {
-  fetchTokenActions: ({commit})=> {
-    commit('updateToken', localStorage.getItem('token'))
-  },
-  
-  refreshToken(){
-    const payload = {
-      token: this.state.jwt
-    }      
-    Axios.post(state.endpoints.refreshJWT, payload)
-      .then((response)=>{
-          this.commit('updateToken', response.data.token)
-        })
-      .catch((error)=>{
-          console.log(error)
-        })
-  }
-}
-
 export default {
   namespaced: true,
   state,
   mutations,
-  actions,
 }

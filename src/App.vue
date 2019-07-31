@@ -17,14 +17,11 @@ export default {
   mounted() {
     if(this.$store.state.auth.jwt){
       this.$store.commit('auth/setAuthUser',
-            { 
-              isAuthenticated: true
-            }
-          )
+        { 
+          isAuthenticated: true
+        }
+      )
     }
-  },
-  created() {
-    this.$store.dispatch('auth/refreshToken')
   }
 }
 </script>
