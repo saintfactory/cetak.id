@@ -49,12 +49,12 @@ export default {
     }
   },
 
-  computed: mapState('auth',['isAuthenticated']),
+  //computed: mapState('auth',['isAuthenticated']),
 
   created() {
-    if(this.$store.state.isAuthenticated) {
-      this.$router.replace({ name: "login" });
-    }
+    // if(!this.$store.state.isAuthenticated) {
+    //   this.$router.replace({ name: "login" });
+    // }
   },
 
   methods: {
@@ -70,10 +70,6 @@ export default {
     }
     
   },
-
-  mounted() {
-    this.$store.commit('auth/updateToken')
-  }
 }
 </script>
 

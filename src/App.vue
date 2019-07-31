@@ -11,38 +11,21 @@
 <script>
 /* eslint-disable */ 
 import './styles.css'
-import { mapState } from 'vuex';
 
 export default {
   name: 'app',
-  computed: mapState('auth', ['authUser','isAuthenticated']),
   mounted() {
-    this.$store.commit('auth/updateToken')
+    if(this.$store.state.auth.jwt){
+      this.$store.commit('auth/setAuthUser',
+            { 
+              isAuthenticated: true
+            }
+          )
+    }
   },
-  // data() {
-  //   return {
-  //     authenticated: false,
-  //     mockAccount: {
-  //         email: "test",
-  //         password: "123"
-  //     }
-  //   }
-  // },
-  // mounted() {
-  //     if(!this.authenticated) {
-  //         this.$router.replace({ name: "login" });
-  //     }
-  // },
-  
-  // methods: {
-  //   setAuthenticated(status) {
-  //       this.authenticated = status;
-  //   },
-  //   logout() {
-  //       this.authenticated = false;
-  //   }
-  // }
-  
+  created() {
+    this.$store.dispatch('auth/refreshToken')
+  }
 }
 </script>
 

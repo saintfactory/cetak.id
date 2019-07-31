@@ -16,10 +16,10 @@ import Completed from './components/user/Completed.vue'
 import ListVendor from './components/user/ListVendor.vue'
 
 const routes = [
-    {
-        path: '*',
-        redirect: '/login'
-    },
+    // {
+    //     path: '*',
+    //     redirect: '/login'
+    // },
     { 
         path: '/', 
         name: 'home',

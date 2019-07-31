@@ -36,7 +36,6 @@ export default {
       .then(response => {
         this.boards = response.data
         this.$store.commit('auth/setAuthUser')
-        this.$store.getters('auth/isLoggedIn')
         console.log(response.status)
         console.log(response.data)
       })

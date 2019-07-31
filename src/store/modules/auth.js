@@ -1,4 +1,5 @@
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
+/* eslint-disable */
 import Vue from 'vue'
 import Axios from 'axios'
 import 'es6-promise/auto'
@@ -34,7 +35,7 @@ const mutations = {
     localStorage.setItem('token', newToken);
     state.jwt = newToken;
   },
-
+  
   removeToken: (state) => {
     // TODO: For security purposes, take localStorage out of the project.
     localStorage.removeItem('token');
@@ -43,30 +44,22 @@ const mutations = {
 }
 
 const actions = {
-  loginAction: ({ commit }) => {
-    Axios.post(state.endpoints.obtainJWT)
-      .then((response) => {
-        commit('updateToken', response.data.token)
-        commit('setAuthUser',
-          { 
-            authUser: response.data, 
-            isAuthenticated: true
-          }
-        )
-        this.$router.push({name: 'list-vendor'})
-      })
-      .catch((error) => {
-        //NOTE: erase this when production
-        console.log(error);
-        console.debug(error);
-        console.dir(error);
-        alert("The username or password is incorrect");
-      })
-  },
-
   fetchTokenActions: ({commit})=> {
     commit('updateToken', localStorage.getItem('token'))
   },
+  
+  refreshToken(){
+    const payload = {
+      token: this.state.jwt
+    }      
+    Axios.post(state.endpoints.refreshJWT, payload)
+      .then((response)=>{
+          this.commit('updateToken', response.data.token)
+        })
+      .catch((error)=>{
+          console.log(error)
+        })
+  }
 }
 
 export default {
