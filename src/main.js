@@ -18,14 +18,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
-  if(to.fullPath === '/dashboard-user/id/list-vendor') {
+  if(to.fullPath === '/dashboard-user/id/vendors') {
     if(!store.state.auth.jwt) {
       next('/login')
     }
   }
   if(to.fullPath === '/login') {
     if(store.state.auth.jwt) {
-      next('/dashboard-user/id/list-vendor')
+      next('/dashboard-user/id/vendors')
     }
   }
   next();

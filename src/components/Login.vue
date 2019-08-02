@@ -55,7 +55,7 @@ export default {
               isAuthenticated: true
             }
           )
-          this.$router.push({path: 'dashboard-user/id/list-vendor'})
+          this.$router.push({path: 'dashboard-user/id/vendors'})
         })
         .catch((error) => {
           //NOTE: erase this when production

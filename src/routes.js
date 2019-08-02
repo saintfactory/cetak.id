@@ -11,9 +11,11 @@ import Profil from './components/partnership/Profil.vue'
 import Produk from './components/partnership/Produk.vue'
 import Pesanan from './components/partnership/Pesanan.vue'
 import Dicetak from './components/partnership/Dicetak.vue'
-import Order from './components/user/Order.vue'
+import VendorDetail from './components/user/VendorDetail.vue'
 import Completed from './components/user/Completed.vue'
-import ListVendor from './components/user/ListVendor.vue'
+import Vendors from './components/user/Vendors.vue'
+
+//const url = 'http://127.0.0.1:8000/api/board/'
 
 const routes = [
     {
@@ -81,20 +83,26 @@ const routes = [
     {
         path: '/dashboard-user/:id',
         component: DashboardUser,
+        name: 'dashboard-user',
+        props: true,
         children: [
             {
                 path: '',
-                component: DashboardUser,
-                name: 'dashboard-user'
+                component: DashboardUser
             },
             {
-                path: 'list-vendor',
-                component: ListVendor,
-                name: 'list-vendor'
+                path: 'vendors',
+                component: Vendors,
+                name: 'vendors',
             },
             {
-                path: 'order',
-                component: Order
+                path: 'vendor-detail/:id',
+                component: VendorDetail,
+                name: 'vendor-detail',
+                props: true,
+                params: {
+                    id: 'id',
+                }
             },
             {
                 path: 'completed',
