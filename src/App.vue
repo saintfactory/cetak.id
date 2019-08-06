@@ -1,15 +1,10 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-    </div> -->
-    <!-- <router-view @authenticated="setAuthenticated" /> -->
     <router-view/>
   </div>
 </template>
 
 <script>
-/* eslint-disable */ 
 import './styles.css'
 import { mapState } from 'vuex';
 
@@ -18,31 +13,7 @@ export default {
   computed: mapState('auth', ['authUser','isAuthenticated']),
   mounted() {
     this.$store.commit('auth/updateToken')
-  },
-  // data() {
-  //   return {
-  //     authenticated: false,
-  //     mockAccount: {
-  //         email: "test",
-  //         password: "123"
-  //     }
-  //   }
-  // },
-  // mounted() {
-  //     if(!this.authenticated) {
-  //         this.$router.replace({ name: "login" });
-  //     }
-  // },
-  
-  // methods: {
-  //   setAuthenticated(status) {
-  //       this.authenticated = status;
-  //   },
-  //   logout() {
-  //       this.authenticated = false;
-  //   }
-  // }
-  
+  },  
 }
 </script>
 

@@ -5,6 +5,7 @@ import 'tachyons'
 import routes from './routes'
 import './styles.css'
 import store from '@/store'
+import 'bootstrap'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
