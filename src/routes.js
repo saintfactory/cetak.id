@@ -14,6 +14,9 @@ import Dicetak from './components/partnership/Dicetak.vue'
 import VendorDetail from './components/user/VendorDetail.vue'
 import Completed from './components/user/Completed.vue'
 import Vendors from './components/user/Vendors.vue'
+import ProfilUser from './components/user/Profil.vue'
+import Histori from './components/user/Histori.vue'
+import Notifikasi from './components/user/Notifikasi.vue'
 
 //const url = 'http://127.0.0.1:8000/api/board/'
 
@@ -108,6 +111,21 @@ const routes = [
                 path: 'completed',
                 name: 'completed',
                 component: Completed
+            },
+            {
+                path: 'profil',
+                name: 'profil-user',
+                component: ProfilUser
+            },
+            {
+                path: 'histori',
+                name: 'histori',
+                component: Histori
+            },
+            {
+                path: 'notifikasi',
+                name: 'notifikasi',
+                component: Notifikasi
             }
         ]
     },

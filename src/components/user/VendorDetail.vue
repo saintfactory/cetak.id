@@ -1,72 +1,69 @@
 <template>
 	<div>
-		<div class="mw9 center ph3-ns mt5-ns">
-			<div class="cf ph2-ns">
-				<div class="fl w-100 w-40-ns pa2 mh4 tl">
-					<img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-90"/>
+		<div class="row">
+      <div class="col-sm-5">
+        <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-75"/>
+        <div class="text-left mt-4 pt-4 ml-5">
+          <p class="text-uppercase font-weight-bold">detail print</p>	
+          <div class="py-2">
+            <label for="rangkap">Rangkap</label>
+            <input type="number" class="d-block w-25" name="rangkap" id="rangkap" v-model="rangkap" />		
+          </div>	
+          <div class="py-2">
+            <label for="halaman">Halaman</label>
+            <input type="number" class="d-block w-25" name="halaman" id="halaman" v-model="halaman" />		
+          </div>
+          <div class="py-2">
+            <label for="jenis-kertas" class="d-block">Jenis Kertas</label>
+            <select class="w-25" name="jenis-kertas" id="jenis-kertas" v-model="jenisKertas">
+              <option value="a4">A4</option>
+              <option value="a3">A3</option>
+              <option value="a2">A2</option>
+            </select>
+          </div>
+          <div class="py-2">
+            <label for="jenis-print" class="d-block">Jenis Print</label>
+            <select class="w-50" name="jenis-print" id="jenis-print" v-model="jenisPrint">
+              <option value="hitam-putih">Hitam Putih</option>
+              <option value="berwarna">Berwarna</option>
+            </select>
+          </div>
+          <div class="py-2">
+            <label for="finishing" class="d-block">Finishing</label>
+            <select class="w-50" name="finishing" id="finishing" v-model="finishing">
+              <option value="jilid">Jilid</option>
+              <option value="hard-cover">Hard Cover</option>
+            </select>
+          </div>
+          <div class="py-2">
+            <label for="warna-cover" class="d-block">Warna Cover</label>
+            <select class="w-50" name="warna-cover" id="warna-cover" v-model="warnaCover">
+              <option value="putih">Putih</option>
+              <option value="biru">Biru</option>
+              <option value="kuning">Kuning</option>
+              <option value="merah">Merah</option>
+              <option value=hijau>Hijau</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-					<div>
-						<p class="f4 b ttu mv4">detail pemesanan</p>	
-						<div class="pv2">
-							<label for="rangkap" class="f6 db lh-copy">Rangkap</label>
-							<input type="number" name="rangkap" id="rangkap" v-model="rangkap" />		
-						</div>	
-						<div class="pv2">
-							<label for="halaman" class="f6 db lh-copy">Halaman</label>
-							<input type="number" name="halaman" id="halaman" v-model="halaman" />		
-						</div>
-						<div class="pv2">
-							<label for="jenis-kertas" class="f6 db lh-copy">Jenis Kertas</label>
-							<select name="jenis-kertas" id="jenis-kertas" v-model="jenisKertas">
-								<option value="a4">A4</option>
-								<option value="a3">A3</option>
-								<option value="a2">A2</option>
-							</select>
-						</div>
-						<div class="pv2">
-							<label for="jenis-print" class="f6 db lh-copy">Jenis Print</label>
-							<select name="jenis-print" id="jenis-print" v-model="jenisPrint">
-								<option value="hitam-putih">Hitam Putih</option>
-								<option value="berwarna">Berwarna</option>
-							</select>
-						</div>
-						<div class="pv2">
-							<label for="finishing" class="f6 db lh-copy">Finishing</label>
-							<select name="finishing" id="finishing" v-model="finishing">
-								<option value="jilid">Jilid</option>
-								<option value="hard-cover">Hard Cover</option>
-							</select>
-						</div>
-						<div class="pv2">
-							<label for="warna-cover" class="f6 db lh-copy">Warna Cover</label>
-							<select name="warna-cover" id="warna-cover" v-model="warnaCover">
-								<option value="putih">Putih</option>
-								<option value="biru">Biru</option>
-								<option value="kuning">Kuning</option>
-								<option value="merah">Merah</option>
-								<option value=hijau>Hijau</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="fl w-100 w-50-ns ph2">
-					<h4 class="f2 tl">{{ product.name }}</h4>
-					<p class="lh-copy tl">{{ product.description }}</p>
-					<p class="b f4 mv3 pt3 tl">Upload dokumenmu disini</p>
-					<div>
-						<div id="file-box">
-              <input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
-              <p id="label-file">Lepaskan Filemu disini</p>
-						</div>
-					</div>
-					<textarea id="input-message" name="message" class="db mv4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
-					<p class="f4 b ttu tl">total harga</p>
-					<p class="f4 b tl">Rp {{ total }}</p>
-					<hr>
-					<input type="button" @click="orderNow" value="Cetak Sekarang" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
-				</div>
-			</div>
+      <div class="col-sm-7 text-left">
+        <h4 class="f2 tl">{{ product.title }}</h4>
+        <p class="lh-copy">{{ product.description }}</p>
+        <p class="text-left font-weight-bold">Upload dokumenmu disini</p>
+        <p class="text-left small">Usahakan di save as PDF terlebih dahulu untuk menghindari perubahan format yang disebabkan perbedaan versi software.</p>
+        <div>
+          <!-- <p id="label-file">Lepaskan Filemu disini<br><br>atau </p> -->
+          <input id="input-file" placeholder="Lepaskan Filemu disini" type="file" name="file" />
+        </div>
+        <textarea id="input-message" name="message" class="d-block my-4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
+        <p class="f4 font-weight-bold text-uppercase text-left">chcekout</p>
+        <p class="text-uppercase text-left">total harga</p>
+        <p class="text-left font-weight-bold">Rp {{ total }}</p>
+        <hr>
+        <input type="button" @click="orderNow" value="Cetak Sekarang" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
+      </div>
 		</div>
 	</div>
 </template>
@@ -75,8 +72,8 @@
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
 import Axios from 'axios'
 
-//const url = 'http://127.0.0.1:8000/api/product-list/'
-const url = 'http://127.0.0.1:8000/api/board/'
+const url = 'http://127.0.0.1:8000/api/product-list/'
+// const url = 'http://127.0.0.1:8000/api/board/'
 
 export default {
 	name: 'VendorDetail',
@@ -99,7 +96,7 @@ export default {
 	},
 	
 	created() {
-		Axios.get(url + this.$route.params.id + '/')
+		Axios.get(url + this.$route.params.id)
 			.then(response => {
 				this.product = response.data
 				console.log(response.status)
@@ -111,111 +108,104 @@ export default {
 	},
 
 	methods: {
-		orderNow: () => {
+		orderNow() {
 			this.$router.push({name: 'completed'})
-		}
+		},
+
+    chooseFile() {
+
+    }
 	}
 }
 </script>
 
 <style scoped>
 	#input-search {
-        border: 1px solid #4286B7;
-        box-sizing: border-box;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-        border-radius: 50px;
-    }
-
-	#input-file {
-		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
-		min-width: 600px;
-		min-height: 350px;
-        overflow: hidden;
-        position: absolute;
-        z-index: 1;
-        display: inline;
-        opacity: 0;
-	}
+    border: 1px solid #4286B7;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+  }
 
 	#input-message {
 		border: 0.5px solid #a8a8a8;
 		box-sizing: border-box;
+    padding: 3%;
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
-		min-width: 100%;
+		min-width: 600px;
 		min-height: 170px;
 		z-index: -1;
 	}
 
-    #input-search-location {
-        border: 0px none;
-        border-bottom: 2px solid #4286B7;
-    }
+  #input-search-location {
+    border: 0px none;
+    border-bottom: 2px solid #4286B7;
+  }
 
-    #label-file {
-        text-align: center;
-        display: inline-block;
-        opacity: 0.3;
-        padding: 20%;
-    }
+  #input-file {
+		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
+		min-width: 600px;
+		min-height: 300px;
+    position: relative;
+    display: block;
+    border: 0.5px solid #a8a8a8;
+    box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 20%;
+    padding-left: 30%;
+	}
 
-    #label-message {
-        text-align: center;
-        display: inline-block;
-        opacity: 0.3;
-        padding: 20%;
-        font-size: 28px;
-        z-index: 1;
-    }
+  #label-file {
+    text-align: center;
+    display: inline;
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  #label-message {
+    text-align: center;
+    display: inline-block;
+    opacity: 0.3;
+    padding: 20%;
+    font-size: 28px;
+    z-index: 1;
+  }
 
 	#input-message::placeholder {
-        text-align: center;
-        display: inline-block;
-        opacity: 0.8;
-        padding: 20%;
-        font-size: 28px;
+    text-align: left;
+    display: inline-block;
+    opacity: 0.8;
+    font-size: 14px;
 		z-index: 1;
 	}
 
-    #file-box {
-        font-size: 28px;
-        border: 0.5px solid #a8a8a8;
-		box-sizing: border-box;
-		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
-		min-width: 100%;
-		min-height: 350px;
-		z-index: -1;
-    }
+  .small {
+    font-size: 10px;
+  }
 
 	input[type="text"]:focus {
-        outline: none;
-        border: 1px solid #aaa;
-    }
+    outline: none;
+    border: 1px solid #aaa;
+  }
 
 	input[type=button] {
-        background-color: #4286B7;
-        border: 3px solid #C7E87C;
+    background-color: #4286B7;
+    border: 3px solid #C7E87C;
 		float: right;
 		margin-bottom: 50px;
 		outline: none;
 	}
 
-	input[type=number] {
-		width: 20%;
-	}
+  .fa-map-marker-alt {
+    color: red;
+  }
 
-	select {
-		width: 100%;
-	}
-	
-    .fa-map-marker-alt {
-        color: red;
-    }
+  .fa-sign-out-alt {
+    color: red;
+  }
 
-    .fa-sign-out-alt {
-        color: red;
-    }
-
-    .fa-user {
-        color: #4286B7;
-    }  
+  .fa-user {
+    color: #4286B7;
+  }  
 </style>
