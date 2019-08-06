@@ -51,32 +51,16 @@
 				</div>
 
 				<div class="fl w-100 w-50-ns ph2">
-					<h4 class="f2 tl">{{ name }}</h4>
-					<p class="lh-copy tl">{{ location }}</p>
+					<h4 class="f2 tl">{{ product.name }}</h4>
+					<p class="lh-copy tl">{{ product.description }}</p>
 					<p class="b f4 mv3 pt3 tl">Upload dokumenmu disini</p>
 					<div>
 						<div id="file-box">
-						<input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
-						<p id="label-file">Lepaskan Filemu disini</p>
+              <input id="input-file" placeholder="Lepaskan Filemu disini" class="db mv3" type="file" name="file" />
+              <p id="label-file">Lepaskan Filemu disini</p>
 						</div>
 					</div>
 					<textarea id="input-message" name="message" class="db mv4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
-					<p class="f4 b ttu tl">pembayaran</p>
-					<div class="flex justify-arround mb4">
-						<div class="w-25 pa3 mr2 tl">
-							<input type="radio" name="DANA" id="dana">
-							<label for="DANA"> DANA</label>
-						</div>
-						<div class="w-25 pa3 mr2 tl">
-							<input type="radio" name="Go-pay" id="gopay">
-							<label for="Go-pay"> GO-Pay</label>
-						</div>
-						<div class="w-25 pa3 mr2 tl">
-							<input type="radio" name="Tunai" id="tunai">
-							<label for="tunai"> Tunai</label>
-						</div>
-					</div>
-
 					<p class="f4 b ttu tl">total harga</p>
 					<p class="f4 b tl">Rp {{ total }}</p>
 					<hr>
@@ -88,8 +72,15 @@
 </template>
 
 <script>
+/*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
+import Axios from 'axios'
+
+//const url = 'http://127.0.0.1:8000/api/product-list/'
+const url = 'http://127.0.0.1:8000/api/board/'
+
 export default {
-	name: 'Order',
+	name: 'VendorDetail',
+	props: ['id'],
 	data() {
 		return {
 			user: 'Hilman Luthfi',
@@ -102,9 +93,23 @@ export default {
 			jenisKertas: '',
 			jenisPrint: '',
 			finishing: '',
-			warnaCover: ''
+			warnaCover: '',
+			product: []
 		}
 	},
+	
+	created() {
+		Axios.get(url + this.$route.params.id + '/')
+			.then(response => {
+				this.product = response.data
+				console.log(response.status)
+				console.log(response.data)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+	},
+
 	methods: {
 		orderNow: () => {
 			this.$router.push({name: 'completed'})

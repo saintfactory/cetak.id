@@ -14,5 +14,5 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 export default new Vuex.Store({
   modules: {
     auth
-  },
+  }
 })

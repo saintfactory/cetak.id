@@ -6,14 +6,18 @@
 
 <script>
 import './styles.css'
-import { mapState } from 'vuex';
 
 export default {
   name: 'app',
-  computed: mapState('auth', ['authUser','isAuthenticated']),
   mounted() {
-    this.$store.commit('auth/updateToken')
-  },  
+    if(this.$store.state.auth.jwt){
+      this.$store.commit('auth/setAuthUser',
+        { 
+          isAuthenticated: true
+        }
+      )
+    }
+  }
 }
 </script>
 
