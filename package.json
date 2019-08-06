@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vue/cli": "^3.9.3",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",

@@ -6,7 +6,10 @@ import routes from './routes'
 import './styles.css'
 import store from '@/store'
 import 'bootstrap'
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.min.css'
+=======
+>>>>>>> a680c16a852f2dc0e6b127e2d4c93e70116acff3
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

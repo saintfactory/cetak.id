@@ -1,9 +1,10 @@
 <template>
+<div class="mt3">
   <form action>
     <table class="w-100">
       <tr>
         <td>
-          <span class="fl f6 b db mb2">Profile Tempat</span>
+          <span class="fl f6 b db mb2">Profil Tempat</span>
         </td>
       </tr>
       <tr>
@@ -62,12 +63,12 @@
           aria-describedby="name-desc"
         />
       </tr>
-
+      <br>
       <!-- ......... -->
 
       <tr>
         <td>
-          <span class="mt3 fl f6 b db mb2">Profile Pemilik</span>
+          <span class="mt3 fl f6 b db mb2">Profil Pemilik</span>
         </td>
       </tr>
       <tr>
@@ -78,59 +79,6 @@
           type="text"
           aria-describedby="name-desc"
         />
-      </tr>
-      <tr>
-        <label for="name" class="fl f7 lh-copy">Nomor Identitas Pemilik</label>
-        <input
-          id="nik_owner"
-          class="input-reset mb2 db w-100"
-          type="text"
-          aria-describedby="name-desc"
-        />
-      </tr>
-      <tr>
-        <label for="name" class="fl mb2 f7 lh-copy">Update Identitas Pemilik</label>
-      </tr>
-      <tr>
-        <div class="fl w-40 w-100-ns b--black-20 measure ba identity-part mb3">
-          <div class="fl w-40 w-40-ns measure identity-part">
-            <img class="mw4 mw-4-ns pa3" src="../../assets/img/business-card.png" alt />
-          </div>
-          <div class="fl w-60 w-60-ns measure identity-part">
-            <table class="pa3 mt-3">
-              <tr>
-                <td class="align">
-                  <i class="f7 fas fa-circle"></i>
-                </td>
-                <td>
-                  <span
-                    class="memo fl ph2 tl f7 lh-copy"
-                  >Pilih file scan/foto kartu identitas KTP/Passport.</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="align">
-                  <i class="f7 fas fa-circle"></i>
-                </td>
-                <td>
-                  <span
-                    class="memo fl ph2 tl f7 lh-copy"
-                  >Foto identitas yang dilampirkan masih berlaku saat ini, harus jelas terbaca dan tidak blur.</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="align">
-                  <i class="f7 fas fa-circle"></i>
-                </td>
-                <td>
-                  <span class="memo fl ph2 tl f7 lh-copy">Maksimal 3MB per file.</span>
-                </td>
-              </tr>
-            </table>
-            <input type="file" name="file" id="file" class="inputfile" />
-            <label class="w-40 w-50-ns pa2 ml3 mt-2 fl f7" for="file">Pilih file</label>
-          </div>
-        </div>
       </tr>
       <tr>
         <label for="name" class="fl f7 lh-copy">Kata Sandi Sebelumnya</label>
@@ -169,13 +117,16 @@
       </tr>
     </table>
   </form>
+  </div>
 </template>
 
 <script>
 </script>
 
 <style scoped>
-
+label{
+  font-weight: 500 !important;
+}
 input {
   border: none;
 }
@@ -187,6 +138,8 @@ textarea {
   border: none;
   border-bottom: 1px solid #aaa;
   color: #333;
+  font-size: 12px;
+  background-color: transparent;
 }
 input[type="text"]:focus,
 input[type="number"]:focus,

@@ -1,104 +1,149 @@
 <template>
-  <div class="dashboard-partnership">
-    <div class="mw-100 center">
-      <div class="cf ">
-        
-        <div class="fl" id="side">
-            <div class="col-md-12">
-            <img src="../../assets/img/logo-putih.png" alt="" class="imgg tc">
-              </div>
-              <ul class="fl w-100 pl0 mt0" id="menus">
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/profil" exact="router-link-exact-active">
-                  <i class="fas fa-user"></i>Profil
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/produk" exact="router-link-exact-active">
-                  <i class="fas fa-paper-plane"></i>Produk
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/pesanan" exact="router-link-exact-active">
-                  <i class="fas fa-envelope"></i>Pesanan
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/dicetak" exact="router-link-exact-active">
-                  <i class="fas fa-print"></i>Monitoring Pesanan
-                </router-link>
-
-              </ul>
+<div class="dashboard-partnership">
+  <div class="mw-100 center">
+    
+    <div class="bars row fixed-top" >
+      <div class="col-md-12">
+        <div class="fl">
+        <img src="../../assets/img/logo-putih.png" alt="" class="imgg tc">
         </div>
 
-        <div class="fl pv5 pa4" id="content">
-          <div class="flex flex-column">
-            <div class="w-100-ns pa1 mb2">
-              <span class="fr f7-ns">
-                <a class="ph2" href><i class="fas fa-bell"></i></a>
-                partnership name
-                <a class="ph2" href>
-                  <i class="fas fa-sort-down"></i>
-                </a>
-              </span>
+        <div class="fr f7">
+          <span class="username">Nama Partnership</span>
+                
+          <!-- <div class="btn-group ml2">
+            <button id="menuss" class="f6 btn btn-sm" data-toggle="dropdown">
+            <i class="white fas fa-bars"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="f7 dropdown-item">Terima Orderan</button>
+              <button class="f7 dropdown-item">Pengaturan</button>
+              <button class="f7 dropdown-item">Logout</button>
             </div>
+          </div> -->
+        </div>
+            
+      </div>
+    </div>
+      
+    <div class="container" id="side" >      
+      <div class="row">
+        <ul class="fl w-100 pl0" id="menus">
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/profil" >
+          <i class="f6 fas fa-user"></i>Profil
+        </router-link>
 
-            <div class="pv3 pa3 bg-white w-100 mt2" id="content-main">
-              <div class="w-100-ns ">
-                <router-view></router-view>
-              </div>
-            </div>
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/monitoring">
+          <i class="f6 fas fa-envelope"></i>Monitoring
+        </router-link>
+
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/etalase">
+          <i class="f6 fas fa-file-alt"></i>Etalase
+        </router-link>
+        </ul>  
+      </div>
+      <hr>
+      <div class="row">
+        <ul class="fl w-100 pl0" id="menus">
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/" >
+          <i class="f6 fas fa-cog"></i>Pengaturan
+        </router-link>
+
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/">
+          <i class="f6 fas fa-unlock"></i>Status
+        </router-link>
+
+        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/">
+          <i class="f6 fas fa-sign-out-alt"></i>Logout
+        </router-link>
+        </ul>  
+      </div>
+
+      <hr>
+    </div>
+
+    <div class="fl" id="content" >
+      <div class="row" id="content-main">           
+        <div class=" pa3 col-md-12" id="content-load">
+          <router-view></router-view>
           </div>
-        </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 </script>
 
 <style scoped>
+.bars{
+  background-color: rgb(35, 84, 152);
+  box-shadow: 2px 2px 10px rgba(26, 99, 152, 0.408);
+  color: #fff
+}
+.username{
+  line-height: 55px;
+  padding-right: 20px
+}
 #side {
-  background-color: #125788;
+  background-color: rgb(245, 245, 245);
   position: fixed;
   height: 100vh;
+  padding-top: 4.5rem;
   width: 15%;
 }
 .router-link-exact-active{
-  background-color:rgba(223, 223, 223, 0.4);
+  background-color:rgb(230, 230, 230);
   z-index: 10;
+  font-weight: 600;
+  color: #fff
 }
 .imgg{
-  max-height: 50px;
-  margin-top: 30px;
-  margin-bottom: 26px;
+  max-height: 40px;
+  margin: 10px;
+  margin-left: 20px;
 }
-
 .menu-list {
     list-style-type: none;
     text-decoration: none;
-    color: #fff;
+    color: rgb(22, 22, 22);
     line-height: 20px;
-    position: relative;
     padding: 10px;
+    padding-left:20px 
 }
 .menu-list i{
-  color: #fff;
-  margin-right: 10px;
+  color: rgb(61, 61, 61);
+  width: 20px;
+  margin-right: 15px;
 }
 .menu-list:hover{
-background:rgba(223, 223, 223, 0.4) !important;
-cursor: pointer
+  background-color:rgb(235, 235, 235) !important;
+  cursor: pointer
 }
+
 #content {
-  background-color: #f5f5f5;
   float: right;
-  min-height: 90vh;
   width: 85%;
+  padding: 2rem;
   padding-bottom: 2rem;
 }
 #content-main {
-  min-height: 90vh;
+  min-height: 92vh;
+  padding-top: 1.5vh;
 }
 .fa-sort-down, .fa-bell {
   color: #4286b7;
 }
+#menuss{
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+#menuss:hover{
+  background-color: #4286b7;
+  color: #fff
+}
+
 </style>
 

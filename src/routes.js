@@ -8,9 +8,8 @@ import RegisterPartnership from './components/RegisterPartnership.vue'
 import DashboardUser from './components/user/Dashboard.vue'
 import Dashboard from './components/partnership/Dashboard.vue'
 import Profil from './components/partnership/Profil.vue'
-import Produk from './components/partnership/Produk.vue'
-import Pesanan from './components/partnership/Pesanan.vue'
-import Dicetak from './components/partnership/Dicetak.vue'
+import Monitoring from './components/partnership/Monitoring.vue'
+import Etalase from './components/partnership/Etalase.vue'
 import VendorDetail from './components/user/VendorDetail.vue'
 import Completed from './components/user/Completed.vue'
 import Vendors from './components/user/Vendors.vue'
@@ -70,16 +69,12 @@ const routes = [
                 component: Profil
             },
             {
-                path: 'produk',
-                component: Produk
+                path: 'monitoring',
+                component: Monitoring
             },
             {
-                path: 'pesanan',
-                component: Pesanan
-            },
-            {
-                path: 'dicetak',
-                component: Dicetak
+                path: 'etalase',
+                component: Etalase
             },
         ]
     },
