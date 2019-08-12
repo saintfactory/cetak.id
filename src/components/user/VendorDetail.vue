@@ -55,7 +55,7 @@
         <p class="text-left small">Usahakan di save as PDF terlebih dahulu untuk menghindari perubahan format yang disebabkan perbedaan versi software.</p>
         <div>
           <!-- <p id="label-file">Lepaskan Filemu disini<br><br>atau </p> -->
-          <input id="input-file" placeholder="Lepaskan Filemu disini" type="file" name="file" />
+          <input id="input-file" placeholder="Lepaskan Filemu disini" type="file" @change="chooseFile()" name="file" />
         </div>
         <textarea id="input-message" name="message" class="d-block my-4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
         <p class="f4 font-weight-bold text-uppercase text-left">chcekout</p>
@@ -71,7 +71,7 @@
 <script>
 /*eslint no-console: ["error", {"allow": ["log", "debug", "dir"]}]*/
 import Axios from 'axios'
-
+const doc = 'http://127.0.0.1:8000/document/'
 const url = 'http://127.0.0.1:8000/api/product-list/'
 // const url = 'http://127.0.0.1:8000/api/board/'
 
@@ -91,7 +91,7 @@ export default {
 			jenisPrint: '',
 			finishing: '',
 			warnaCover: '',
-			product: []
+      product: []
 		}
 	},
 	
@@ -113,7 +113,15 @@ export default {
 		},
 
     chooseFile() {
-
+      Axios.post(doc, {event: this.event})
+        .then(response => {
+          console.log(response.status)
+          this.product = response.data
+          response.data = event.target.files[0]
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
 	}
 }

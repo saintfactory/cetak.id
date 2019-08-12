@@ -6,19 +6,19 @@
       </div>
       
       <div class="sidebar-menu pt-5" id="sidebarMenu">
-        <router-link class="menu-list" to="/dashboard-user/id/profil" tag="li" exact="router-link-exact-active">
+        <router-link class="menu-list" to="/dashboard-user/id/profil" tag="li">
           <i class="fas fa-user"></i>Profil
         </router-link>
 
-        <router-link class="menu-list" to="/dashboard-user/id/notifikasi" tag="li" exact="router-link-exact-active">
+        <router-link class="menu-list" to="/dashboard-user/id/notifikasi" tag="li">
           <i class="fas fa-bell"></i>Notifikasi
         </router-link>
 
-        <router-link class="menu-list" to="/dashboard-user/id/vendors" tag="li" exact="router-link-exact-active">
+        <router-link class="menu-list" to="/dashboard-user/id/vendors" tag="li">
           <i class="fas fa-print"></i>Cetak Pesanan
         </router-link>
 
-        <router-link class="menu-list" to="/dashboard-user/id/histori" tag="li" exact="router-link-exact-active">
+        <router-link class="menu-list" to="/dashboard-user/id/histori" tag="li">
           <i class="fas fa-history"></i>Histori Pesanan
         </router-link>
       </div>

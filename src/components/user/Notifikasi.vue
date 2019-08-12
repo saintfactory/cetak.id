@@ -1,7 +1,7 @@
 <template>
 	<div id="notifikasi">
 		<h4 class="font-weight-bold">Notifikasi Pesanan</h4>
-		<input type="text" name="search" placeholder="Cari nama"/>
+		<input type="text" name="search" placeholder="Cari nama" v-model="search"/>
 		<table class="table">
 			<thead>
 				<tr>
@@ -10,8 +10,8 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tbody v-for="order in orders" :key="order.id">
-				<tr>
+			<tbody v-if="filteredList && filteredList.length">
+				<tr v-for="order in orders" :key="order.id">
 					<th>{{ order.name }}</th>
 					<td>{{ order.username }}</td>
 					<td>{{ order.email }}</td>
@@ -28,7 +28,8 @@ export default {
 	name: 'Notifikasi',
 	data() {
 		return {
-			orders: []
+			orders: [],
+			search: ''
 		}
 	},
 
@@ -41,6 +42,14 @@ export default {
 			.catch(error => {
 				console.log(error)
 			})
+	},
+
+	computed: {
+		filteredList(){
+			return this.orders.filter(order => {
+				return order.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+			})
+		}
 	}
 }
 </script>

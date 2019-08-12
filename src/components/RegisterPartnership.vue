@@ -12,13 +12,13 @@
 				<input type="text" v-model="email" name="email" class="pa2 input-reset ba bg-transparent w-100 measure white">
 			</div>
 			<div class="pa2">
-				<label for="password1" class="db fw4 lh-copy f6">Password</label>
-				<input type="password" v-model="password1" name="password1" class="pa2 input-reset ba bg-transparent w-100 measure white">
+				<label for="password" class="db fw4 lh-copy f6">Password</label>
+				<input type="password" v-model="password" name="password" class="pa2 input-reset ba bg-transparent w-100 measure white">
 			</div>
-			<div class="pa2">
+			<!-- <div class="pa2">
 				<label for="password2"  class="db fw4 lh-copy f6">Confirm Password</label>
 				<input type="password" v-model="password2" name="password2" class="pa2 input-reset ba bg-transparent w-100 measure white">
-			</div>
+			</div> -->
 			<div class="pa2 mt3">
 				<input
 					class="f6 dib bg-animate hover-bg-green hover-white no-underline pv2 ph4 br-pill ba bw1"
@@ -31,17 +31,33 @@
 </template>
 
 <script>
+/* eslint-disable */
+import axios from 'axios'
 export default {
 	name: 'RegisterPartnership',
 	data: () => ({
 		username: '',
 		email:'',
-		password1:'',
-		password2:''
+		password:'',
 	}),
 	methods: {
 		signup() {
 			//TODO: User registration method
+			axios.post('http://127.0.0.1:8000/account/register/', {
+				username: this.username,
+				email: this.email,
+				password: this.password
+			})
+				.then(response => {
+					this.info = response.data
+					console.log(response.data)
+					alert('Registrasi Berhasil!')
+					this.$router.push({path: '/login'})
+				})
+				.catch(error => {
+					console.log(error)
+					alert('Registrasi Gagal!')
+				})
 		}
 	}
 }
@@ -55,5 +71,9 @@ export default {
 	padding-top: 20px;
 	top: 0;
 	text-align: left;
+}
+
+form {
+	margin: 0 auto;
 }
 </style>
