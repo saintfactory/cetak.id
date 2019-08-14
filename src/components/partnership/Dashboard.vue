@@ -53,9 +53,11 @@
           <i class="f6 fas fa-unlock"></i>Status
         </router-link>
 
-        <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/">
-          <i class="f6 fas fa-sign-out-alt"></i>Logout
-        </router-link>
+        <li class="tl pv1 pl3 f7 menu-list">
+          <a @click="logout">
+            <i class="f6 fas fa-sign-out-alt"></i>Logout
+          </a>
+        </li>
         </ul>  
       </div>
 
@@ -74,6 +76,21 @@
 </template>
 
 <script>
+export default {
+  name: 'DashboardPartnership',
+  methods: {
+    logout(user){
+      this.$store.commit('auth/removeToken', user)
+      this.$router.push({name: 'login'})
+      this.$store.commit('auth/setAuthUser',
+        { 
+          authUser: null, 
+          isAuthenticated: false
+        }
+      )
+    },
+  }
+}
 </script>
 
 <style scoped>

@@ -10,8 +10,8 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tbody v-if="filteredList && filteredList.length">
-				<tr v-for="order in orders" :key="order.id">
+			<tbody>
+				<tr v-for="order in filteredList" :key="order.id">
 					<th>{{ order.name }}</th>
 					<td>{{ order.username }}</td>
 					<td>{{ order.email }}</td>
@@ -45,9 +45,10 @@ export default {
 	},
 
 	computed: {
-		filteredList(){
-			return this.orders.filter(order => {
-				return order.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+		filteredList: function(){
+			return this.orders.filter((order) => {
+				return order.name.match(this.search)
+				//return order.type.toLowerCase().indexOf(this.search.toLowerCase()) > -1
 			})
 		}
 	}

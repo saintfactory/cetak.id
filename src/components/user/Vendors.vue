@@ -3,7 +3,7 @@
     <div class="card-deck mt-3">
       <div class="card" id="card" v-for="product in products || product in filter" :key="product.id">
         <router-link :to="{ name: 'vendor-detail', params: { id: product.id }}" id="card-vendors">
-          <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-100 db"/>
+          <img :src="product.image" alt="Profil Percetakan" class="w-100 db"/>
           <div class="card-body">
               <p class="card-title font-weight-bold">{{product.title}}</p>
               <p class="card-text">{{product.description}}</p>

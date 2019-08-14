@@ -49,7 +49,7 @@ export default {
         username: this.username,
         password: this.password
       }
-      axios.post('http://127.0.0.1:8000/account/login/', payload)
+      axios.post(this.$store.state.auth.endpoints.login, payload)
         .then(response => {
           this.info = response.data
           this.$store.commit('auth/updateToken', response.data.token)
@@ -59,30 +59,14 @@ export default {
               isAuthenticated: true
             }
           )
-          this.$router.push({path: 'dashboard-user/id/vendors'})
+          this.$router.push({path: 'dashboard-user/id/profil'})
+          console.log(response.status)
+          console.log(response.data)
         })
         .catch(error => {
           alert("The username or password is incorrect");
           console.log(error)
         })
-      // axios.post(this.$store.state.auth.endpoints.obtainJWT, payload)
-      //   .then((response) => {
-      //     this.$store.commit('auth/updateToken', response.data.token)
-      //     this.$store.commit('auth/setAuthUser',
-      //       { 
-      //         authUser: response.data, 
-      //         isAuthenticated: true
-      //       }
-      //     )
-      //     this.$router.push({path: 'dashboard-user/id/vendors'})
-      //   })
-      //   .catch((error) => {
-      //     //NOTE: erase this when production
-      //     console.log(error);
-      //     console.debug(error);
-      //     console.dir(error);
-      //     alert("The username or password is incorrect");
-      //   })
     }
   }
 }

@@ -2,7 +2,7 @@
 	<div>
 		<div class="row">
       <div class="col-sm-5">
-        <img src="../../assets/img/print1.png" alt="Profil Percetakan" class="w-75"/>
+        <img :src="product.image" alt="Profil Percetakan" class="w-75"/>
         <div class="text-left mt-4 pt-4 ml-5">
           <p class="text-uppercase font-weight-bold">detail print</p>	
           <div class="py-2">
@@ -60,7 +60,7 @@
         <textarea id="input-message" name="message" class="d-block my-4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
         <p class="f4 font-weight-bold text-uppercase text-left">chcekout</p>
         <p class="text-uppercase text-left">total harga</p>
-        <p class="text-left font-weight-bold">Rp {{ total }}</p>
+        <p class="text-left font-weight-bold">Rp {{ product.price }}</p>
         <hr>
         <input type="button" @click="orderNow" value="Cetak Sekarang" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
       </div>
@@ -73,7 +73,6 @@
 import Axios from 'axios'
 const doc = 'http://127.0.0.1:8000/document/'
 const url = 'http://127.0.0.1:8000/api/product-list/'
-// const url = 'http://127.0.0.1:8000/api/board/'
 
 export default {
 	name: 'VendorDetail',
@@ -83,7 +82,6 @@ export default {
 			user: 'Hilman Luthfi',
 			name: 'Acadia Print',
 			location: 'Jl. Kaliurang km 9,3, Gandok, Yogyakarta',
-			total: '15.000,00',
 			rangkap: '',
 			halaman: '',
 			pesan: '',
