@@ -6,11 +6,10 @@ import routes from './routes'
 import './styles.css'
 import store from '@/store'
 import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-
-import '@/assets/fonts/all.css';
 
 const router = new VueRouter({
   mode: 'history',

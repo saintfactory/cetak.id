@@ -17,7 +17,8 @@ const state = {
     obtainJWT: 'http://127.0.0.1:8000/api/auth/obtain_token/',
     refreshJWT: 'http://127.0.0.1:8000/api/auth/refresh_token/',
     baseUrl: 'http://127.0.0.1:8000/api/auth/',
-    register: 'http://127.0.0.1:8000/signup/'
+    register: 'http://127.0.0.1:8000/account/registration/',
+    login: 'http://127.0.0.1:8000/account/login/'
   }
 }
 

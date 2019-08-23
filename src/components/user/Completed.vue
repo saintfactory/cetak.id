@@ -1,10 +1,12 @@
 <template>
-    <div class="flex flex-column">
+    <div class="">
         <div>
             <img src="../../assets/img/undraw_confirmation_2uy0.png" alt="Order Completed">
         </div>
         <div>
-            <input type="button" value="Yuk Cetak Lagi" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
+            <p>Terimakasih, kamu akan mendapat notifikasi dari pihak printing tentang perkembangan pesanan kamu.<br>
+Silahkan cancel pesanan dan pilih tempat print lain jika pesanan tidak kunjung diterima.</p>
+            <input type="button" value="Oke" class="f6 grow no-underline br-pill ph4 pv3 mv2 b white" />
         </div>
     </div>
 </template>

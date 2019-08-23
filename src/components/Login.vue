@@ -43,6 +43,7 @@
     <form>
       <img src="../assets/img/logo.png" class="logo mv3" alt="Logo Cetak.id"/> <br>
       <span class="i">Silahkan Login menggunakan Akun Anda</span> <br>
+
       <label class="db fw6 lh-copy f6 black tl" for="username">Username</label>
       <input 
         type="text" 
@@ -50,6 +51,7 @@
         class="ma2 pa2 input-reset" 
         v-model="username" 
       /><br>
+
       <label class="db fw6 lh-copy f6 black tl" for="password">Password</label>
       <input 
         type="password" 
@@ -57,6 +59,7 @@
         name="password" 
         v-model="password"  
       /><br>
+
       <input 
         type="button" 
         class="f6 grow no-underline br-pill ph3 pv2 mv2 b mb2 dib white" 
@@ -86,8 +89,9 @@ export default {
         username: this.username,
         password: this.password
       }
-      axios.post(this.$store.state.auth.endpoints.obtainJWT, payload)
-        .then((response) => {
+      axios.post(this.$store.state.auth.endpoints.login, payload)
+        .then(response => {
+          this.info = response.data
           this.$store.commit('auth/updateToken', response.data.token)
           this.$store.commit('auth/setAuthUser',
             { 
@@ -95,14 +99,13 @@ export default {
               isAuthenticated: true
             }
           )
-          this.$router.push({path: 'dashboard-user/id/vendors'})
+          this.$router.push({path: 'dashboard-user/id/profil'})
+          console.log(response.status)
+          console.log(response.data)
         })
-        .catch((error) => {
-          //NOTE: erase this when production
-          console.log(error);
-          console.debug(error);
-          console.dir(error);
+        .catch(error => {
           alert("The username or password is incorrect");
+          console.log(error)
         })
     }
   }
