@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 	<div class="container-fluid">
 		<div class="row justify-content-md-center join-partner">
 			<div class="col-md-4 join-user-part">
@@ -30,14 +29,6 @@
 		<p class="i white tc">Silahkan isi data tempat dengan benar</p>
 		<form @submit="signup" class="white">
 			<div class="pa2">
-=======
-	<div class="register-partnership">
-		<img src="../assets/img/logo.png" class="logo" alt="Logo Cetak.id"/>
-		<h2 class="f2 tc">Daftarkan Percetakanmu Disini</h2>
-		<p class="i tc">Silahkan isi data tempat dengan benar</p>
-		<form>
-			<div class="p-2">
->>>>>>> frontend
 				<label for="username" class="db fw4 lh-copy f6">Username</label>
 				<input type="text" v-model="username" name="username" class="p-2">
 			</div>
@@ -98,12 +89,8 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 /* .register-partnership {
 	background-color: #4286B7;
-=======
-.register-partnership {
->>>>>>> frontend
 	min-height:100vh;
 	margin-top: 0;
 	padding-top: 50px;
