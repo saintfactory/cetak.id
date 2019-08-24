@@ -82,12 +82,13 @@ export default {
   data: () => ({
     errors: [],
     nama: null,
+    email: '',
     password: null,
     passwordConfirm: null,
-    // gender: false,
+    gender: false,
     username: null,
-    // telp: null,
-    // job: false
+    telp: null,
+    job: false
   }),
   methods: {
     registerUser: function(){

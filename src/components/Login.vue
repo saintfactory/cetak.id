@@ -1,6 +1,6 @@
 <template>
   <div class="login white">
-    <form>
+    <form id="login-form">
       <img src="../assets/img/logo.png" class="logo mv3" alt="Logo Cetak.id"/> <br>
       <span class="i">Silahkan Login menggunakan Akun Anda</span> <br>
 
@@ -10,7 +10,9 @@
         name="username" 
         class="ma2 pa2 input-reset" 
         v-model="username" 
+        v-on:keyup.enter="login()"
       /><br>
+      <span class="text-danger" v-if="validationErrors.username" v-text="validationErrors.username"></span>
 
       <label class="db fw6 lh-copy f6 black tl" for="password">Password</label>
       <input 
@@ -18,7 +20,9 @@
         class="ma2 pa2 input-reset" 
         name="password" 
         v-model="password"  
+        v-on:keyup.enter="login()"
       /><br>
+      <span class="text-danger" v-if="validationErrors.password" v-text="validationErrors.password"></span>
 
       <input 
         type="button" 
@@ -40,34 +44,68 @@ export default {
   data(){
     return {
       username: '',
-      password: ''
+      password: '',
+      validationErrors: {
+        username: '',
+        password: ''
+      }
     }
   },
   methods: {
     login(){
-      const payload = {
-        username: this.username,
-        password: this.password
+      if(this.validateForm()){
+        const payload = {
+          username: this.username,
+          password: this.password
+        }
+        axios.post(this.$store.state.auth.endpoints.login, payload)
+          .then(response => {
+            this.info = response.data
+            this.$store.commit('auth/updateToken', response.data.token)
+            this.$store.commit('auth/setAuthUser',
+              { 
+                authUser: response.data, 
+                isAuthenticated: true
+              }
+            )
+            this.$router.push({path: 'dashboard-user/id/profil'})
+            console.log(response.status)
+            console.log(response.data)
+          })
+          .catch(error => {
+            alert("The username or password is incorrect");
+            console.log(error)
+          })
       }
-      axios.post(this.$store.state.auth.endpoints.login, payload)
-        .then(response => {
-          this.info = response.data
-          this.$store.commit('auth/updateToken', response.data.token)
-          this.$store.commit('auth/setAuthUser',
-            { 
-              authUser: response.data, 
-              isAuthenticated: true
-            }
-          )
-          this.$router.push({path: 'dashboard-user/id/profil'})
-          console.log(response.status)
-          console.log(response.data)
-        })
-        .catch(error => {
-          alert("The username or password is incorrect");
-          console.log(error)
-        })
-    }
+    },
+
+    validateForm(formId = 'login-form', errorObjectName = 'validationErrors'){
+			var nodes = document.querySelectorAll(`#${formId} :invalid`)
+			
+			Object.keys(this[errorObjectName]).forEach(key => {
+				this[errorObjectName][key] = null
+			})
+
+			if(nodes.length > 0) {
+				nodes.forEach(node => {
+					if (node.title) {
+            this[errorObjectName][node.name] = node.title;
+          }
+          else {
+            this[errorObjectName][node.name] = node.validationMessage;
+					}
+					
+					node.addEventListener('change', function (e) {
+            this.validateForm(formId, errorObjectName);
+          })
+				})
+
+				return false
+			}
+			else {
+				return true
+			}
+		}
   }
 }
 </script>

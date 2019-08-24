@@ -55,7 +55,7 @@
         <p class="text-left small">Usahakan di save as PDF terlebih dahulu untuk menghindari perubahan format yang disebabkan perbedaan versi software.</p>
         <div>
           <!-- <p id="label-file">Lepaskan Filemu disini<br><br>atau </p> -->
-          <input id="input-file" placeholder="Lepaskan Filemu disini" type="file" @change="chooseFile()" name="file" />
+          <input id="input-file" placeholder="Lepaskan Filemu disini" ref="file" type="file" @change="chooseFile()" name="file" />
         </div>
         <textarea id="input-message" name="message" class="d-block my-4" type="text" placeholder="Tambahkan Pesan" v-model="pesan"/>
         <p class="f4 font-weight-bold text-uppercase text-left">chcekout</p>
@@ -89,7 +89,8 @@ export default {
 			jenisPrint: '',
 			finishing: '',
 			warnaCover: '',
-      product: []
+      product: [],
+      file: ''
 		}
 	},
 	
@@ -107,19 +108,28 @@ export default {
 
 	methods: {
 		orderNow() {
-			this.$router.push({name: 'completed'})
-		},
-
-    chooseFile() {
-      Axios.post(doc, {event: this.event})
+      let formData = new FormData()
+      formData.append('file', this.file)
+      Axios.post(doc, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
         .then(response => {
           console.log(response.status)
+          console.log('Success!')
           this.product = response.data
-          response.data = event.target.files[0]
+          this.$router.push({name: 'completed'})
         })
         .catch(error => {
           console.log(error)
+          console.log('Failed!')
         })
+		},
+
+    chooseFile() {
+      this.file = this.$refs.file.files[0]
     }
 	}
 }

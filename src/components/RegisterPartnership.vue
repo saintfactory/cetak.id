@@ -3,22 +3,26 @@
 		<img src="../assets/img/logo.png" class="logo" alt="Logo Cetak.id"/>
 		<h2 class="f2 tc">Daftarkan Percetakanmu Disini</h2>
 		<p class="i tc">Silahkan isi data tempat dengan benar</p>
-		<form>
+		<form id="register-form">
 			<div class="p-2">
 				<label for="username" class="db fw4 lh-copy f6">Username</label>
-				<input type="text" v-model="username" name="username" class="p-2">
+				<input type="text" v-model="username" v-on:keyup.enter="signup()" name="username" class="p-2" required>
+				<span class="text-danger" v-if="validationErrors.username" v-text="validationErrors.username"></span>
 			</div>
 			<div class="p-2">
 				<label for="email" class="db fw4 lh-copy f6">Email</label>
-				<input type="text" v-model="email" name="email" class="p-2">
+				<input type="text" v-model="email" v-on:keyup.enter="signup()" name="email" class="p-2" required>
+				<span class="text-danger" v-if="validationErrors.email" v-text="validationErrors.email"></span>
 			</div>
 			<div class="p-2">
 				<label for="password1" class="db fw4 lh-copy f6">Password</label>
-				<input type="password" v-model="password1" name="password1" class="p-2 ">
+				<input type="password" v-model="password1" v-on:keyup.enter="signup()" name="password1" class="p-2" required>
+				<span class="text-danger" v-if="validationErrors.password1" v-text="validationErrors.password1"></span>
 			</div>
 			<div class="p-2">
 				<label for="password2"  class="db fw4 lh-copy f6">Confirm Password</label>
-				<input type="password" v-model="password2" name="password2" class="p-2">
+				<input type="password" v-model="password2" v-on:keyup.enter="signup()" name="password2" class="p-2" required>
+				<span class="text-danger" v-if="validationErrors.password2" v-text="validationErrors.password2"></span>
 			</div>
 			<div class="p-2 mt3">
 				<input type="button" value="Daftar Sekarang" @click="signup()" />
@@ -37,27 +41,63 @@ export default {
 			username: '',
 			email:'',
 			password1:'',
-			password2:''
+			password2:'',
+			validationErrors: {
+				username: '',
+				email:'',
+				password1:'',
+				password2:'',
+			}
 		}
 	},
 	methods: {
 		signup() {
-			const payload = {
-				username: this.username,
-				email: this.email,
-				password1: this.password1,
-				password2: this.password2
+			if(this.validateForm()){
+				const payload = {
+					username: this.username,
+					email: this.email,
+					password1: this.password1,
+					password2: this.password2
+				}
+				axios.post(this.$store.state.auth.endpoints.register, payload)
+					.then(response => {
+						this.info = response.data
+						console.log(response.status)
+						this.$router.push({path: '/login'})
+					})
+					.catch(error => {
+						console.log(error)
+						alert('Registrasi Gagal!')
+					})
+				}
+		},
+
+		validateForm(formId = 'register-form', errorObjectName = 'validationErrors'){
+			var nodes = document.querySelectorAll(`#${formId} :invalid`)
+			
+			Object.keys(this[errorObjectName]).forEach(key => {
+				this[errorObjectName][key] = null
+			})
+
+			if(nodes.length > 0) {
+				nodes.forEach(node => {
+					if (node.title) {
+                        this[errorObjectName][node.name] = node.title;
+                    }
+                    else {
+                        this[errorObjectName][node.name] = node.validationMessage;
+					}
+					
+					node.addEventListener('change', function (e) {
+                        this.validateForm(formId, errorObjectName);
+                    })
+				})
+
+				return false
 			}
-			axios.post(this.$store.state.auth.endpoints.register, payload)
-				.then(response => {
-					this.info = response.data
-					console.log(response.status)
-					this.$router.push({path: '/login'})
-				})
-				.catch(error => {
-					console.log(error)
-					alert('Registrasi Gagal!')
-				})
+			else {
+				return true
+			}
 		}
 	}
 }
