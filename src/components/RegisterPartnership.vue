@@ -9,49 +9,54 @@
 
 			<div class="col-md-8 join-user-paid">
 				<div class="row justify-content-md-center">
-				<div class="col-md-7">
-				<form>
-					<div class="form-group">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" v-model="username">
+					<div class="col-md-7 mt-5">
+						<!-- <form>
+							<div class="form-group">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Email" v-model="username">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password" v-model="password">
+							</div>
+							
+							<button type="submit" class="btn-block btn btn-primary mb-2" @click="login()">Masuk</button>
+							<span class="font-primary">Belum punya akun Cetak ? 
+								<span>
+									<router-link to="/join" class="join"> 
+										Daftar Sekarang 
+									</router-link>
+								</span>
+							</span>
+						</form> -->
+            <form @submit="signup">
+              <h2 class="my-5">Register Partnership</h2>
+              <div class="pa2">
+                <label for="username" class="db fw4 lh-copy f6">Username</label>
+                <input type="text" v-model="username" v-on:keyup.enter="signup()" name="username" class="p-2" required>
+                <span class="text-danger" v-if="validationErrors.username" v-text="validationErrors.username"></span>
+              </div>
+              <div class="p-2">
+                <label for="email" class="db fw4 lh-copy f6">Email</label>
+                <input type="text" v-model="email" v-on:keyup.enter="signup()" name="email" class="p-2" required>
+                <span class="text-danger" v-if="validationErrors.email" v-text="validationErrors.email"></span>
+              </div>
+              <div class="p-2">
+                <label for="password1" class="db fw4 lh-copy f6">Password</label>
+                <input type="password" v-model="password1" v-on:keyup.enter="signup()" name="password1" class="p-2" required>
+                <span class="text-danger" v-if="validationErrors.password1" v-text="validationErrors.password1"></span>
+              </div>
+              <div class="p-2">
+                <label for="password2"  class="db fw4 lh-copy f6">Confirm Password</label>
+                <input type="password" v-model="password2" v-on:keyup.enter="signup()" name="password2" class="p-2" required>
+                <span class="text-danger" v-if="validationErrors.password2" v-text="validationErrors.password2"></span>
+              </div>
+              <div class="p-2 mt3">
+                <input type="button" value="Daftar Sekarang" @click="signup()" />
+              </div>
+            </form>
 					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
-					</div>
-					
-					<button type="submit" class="btn-block btn btn-primary mb-2" @click="login()">Masuk</button>
-					<span class="font-primary">Belum punya akun Cetak ? <span><router-link to="/join" class="join"> Daftar Sekarang </router-link></span></span>
-          		</form>
-				</div>
 				</div>
 			</div>
 		</div>
-		<!-- <h2 class="f2 white tc">Daftarkan Percetakanmu Disini</h2>
-		<p class="i white tc">Silahkan isi data tempat dengan benar</p>
-		<form @submit="signup" class="white">
-			<div class="pa2">
-				<label for="username" class="db fw4 lh-copy f6">Username</label>
-				<input type="text" v-model="username" v-on:keyup.enter="signup()" name="username" class="p-2" required>
-				<span class="text-danger" v-if="validationErrors.username" v-text="validationErrors.username"></span>
-			</div>
-			<div class="p-2">
-				<label for="email" class="db fw4 lh-copy f6">Email</label>
-				<input type="text" v-model="email" v-on:keyup.enter="signup()" name="email" class="p-2" required>
-				<span class="text-danger" v-if="validationErrors.email" v-text="validationErrors.email"></span>
-			</div>
-			<div class="p-2">
-				<label for="password1" class="db fw4 lh-copy f6">Password</label>
-				<input type="password" v-model="password1" v-on:keyup.enter="signup()" name="password1" class="p-2" required>
-				<span class="text-danger" v-if="validationErrors.password1" v-text="validationErrors.password1"></span>
-			</div>
-			<div class="p-2">
-				<label for="password2"  class="db fw4 lh-copy f6">Confirm Password</label>
-				<input type="password" v-model="password2" v-on:keyup.enter="signup()" name="password2" class="p-2" required>
-				<span class="text-danger" v-if="validationErrors.password2" v-text="validationErrors.password2"></span>
-			</div>
-			<div class="p-2 mt3">
-				<input type="button" value="Daftar Sekarang" @click="signup()" />
-			</div>
-		</form> -->
 	</div>
 </template>
 
@@ -107,15 +112,15 @@ export default {
 			if(nodes.length > 0) {
 				nodes.forEach(node => {
 					if (node.title) {
-                        this[errorObjectName][node.name] = node.title;
-                    }
-                    else {
-                        this[errorObjectName][node.name] = node.validationMessage;
+            this[errorObjectName][node.name] = node.title;
+          }
+          else {
+            this[errorObjectName][node.name] = node.validationMessage;
 					}
 					
 					node.addEventListener('change', function (e) {
-                        this.validateForm(formId, errorObjectName);
-                    })
+            this.validateForm(formId, errorObjectName);
+          })
 				})
 
 				return false
@@ -181,7 +186,8 @@ input[type="button"]:focus {
 
 form {
 	margin: 0 auto;
-	width: 60%;
+	width: 100%;
+  text-align: left;
 }
 
 img {

@@ -2,7 +2,7 @@
   <div class="dashboard-user" id="wrapper">
     <div id="side">
       <div class="sidebar-logo">
-        <img src="../../assets/img/logo-putih.png" class="logo" alt="Logo Cetak.id">
+        <img src="../../assets/img/logo.png" class="logo w-50" alt="Logo Cetak.id">
       </div>
       
       <div class="sidebar-menu pt-5" id="sidebarMenu">

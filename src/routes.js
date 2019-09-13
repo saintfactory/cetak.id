@@ -6,6 +6,7 @@ import CaraPrint from './components/CaraPrint.vue'
 import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
 import DashboardUser from './components/user/Dashboard.vue'
+import Order from './components/Order.vue'
 
 import Dashboard from './components/partnership/Dashboard.vue'
 import Profil from './components/partnership/Profil.vue'
@@ -26,132 +27,136 @@ import Notifikasi from './components/user/Notifikasi.vue'
 //const url = 'http://127.0.0.1:8000/api/board/'
 
 const routes = [
-    {
-        path: '*',
-        redirect: '/login'
-    },
-    { 
-        path: '/', 
-        name: 'home',
-        component: Home 
-    },
-    { 
-        path: '/login', 
-        name: 'login',
-        component: Login 
-    },
-    {
-        path: '/register-user',
-        name: 'register-user',
-        component: RegisterUser
-    },
-    {
-        path: '/register-partnership',
-        name: 'register-partnership',
-        component: RegisterPartnership
-    },
-    { 
-        path: '/join', 
-        component: Join 
-    },
-    { 
-        path: '/tentang-kami', 
-        component: TentangKami 
-    },
-    { 
-        path: '/cara-print', 
-        component: CaraPrint 
-    },
-    {
-        path: '/dashboard-partnership/:id',
-        component: Dashboard,
+  {
+    path: '*',
+    redirect: '/login'
+  },
+  { 
+    path: '/', 
+    name: 'home',
+    component: Home 
+  },
+  { 
+    path: '/login', 
+    name: 'login',
+    component: Login 
+  },
+  {
+    path: '/register-user',
+    name: 'register-user',
+    component: RegisterUser
+  },
+  {
+    path: '/register-partnership',
+    name: 'register-partnership',
+    component: RegisterPartnership
+  },
+  { 
+    path: '/join', 
+    component: Join 
+  },
+  { 
+    path: '/tentang-kami', 
+    component: TentangKami 
+  },
+  { 
+    path: '/cara-print', 
+    component: CaraPrint 
+  },
+  {
+    path: '/order',
+    component: Order
+  },
+  {
+    path: '/dashboard-partnership/:id',
+    component: Dashboard,
+    children: [
+      {
+        path: '',
+        component: Profil
+      },
+      {
+        path: 'profil',
+        component: Profil
+      },
+      {
+        path: 'monitoring',
+        component: Monitoring,
         children: [
-            {
-                path: '',
-                component: Profil
-            },
-            {
-                path: 'profil',
-                component: Profil
-            },
-            {
-                path: 'monitoring',
-                component: Monitoring,
-                children: [
-                    {
-                        path:'',
-                        component: Pesanan
-                    },
-                    {
-                        path:'pesanan',
-                        component: Pesanan
-                    },
-                    {
-                        path:'terima',
-                        component: Diterima
-                    },
-                    {
-                        path:'tolak',
-                        component: Ditolak
-                    },
-                    {
-                        path:'selesai',
-                        component: Selesai
-                    }
-                ]
-            },
-            {
-                path: 'etalase',
-                component: Etalase
-            },
+          {
+            path:'',
+            component: Pesanan
+          },
+          {
+            path:'pesanan',
+            component: Pesanan
+          },
+          {
+            path:'terima',
+            component: Diterima
+          },
+          {
+            path:'tolak',
+            component: Ditolak
+          },
+          {
+            path:'selesai',
+            component: Selesai
+          }
         ]
-    },
-    {
-        path: '/dashboard-user/:id',
-        component: DashboardUser,
-        name: 'dashboard-user',
+      },
+      {
+        path: 'etalase',
+        component: Etalase
+      },
+    ]
+  },
+  {
+    path: '/dashboard-user/',
+    component: DashboardUser,
+    name: 'dashboard-user',
+    props: true,
+    children: [
+      {
+        path: '',
+        component: DashboardUser
+      },
+      {
+        path: 'vendors',
+        component: Vendors,
+        name: 'vendors',
+      },
+      {
+        path: 'vendor-detail/:id',
+        component: VendorDetail,
+        name: 'vendor-detail',
         props: true,
-        children: [
-            {
-                path: '',
-                component: DashboardUser
-            },
-            {
-                path: 'vendors',
-                component: Vendors,
-                name: 'vendors',
-            },
-            {
-                path: 'vendor-detail/:id',
-                component: VendorDetail,
-                name: 'vendor-detail',
-                props: true,
-                params: {
-                    id: 'id',
-                }
-            },
-            {
-                path: 'completed',
-                name: 'completed',
-                component: Completed
-            },
-            {
-                path: 'profil',
-                name: 'profil-user',
-                component: ProfilUser
-            },
-            {
-                path: 'histori',
-                name: 'histori',
-                component: Histori
-            },
-            {
-                path: 'notifikasi',
-                name: 'notifikasi',
-                component: Notifikasi
-            }
-        ]
-    },
+        params: {
+          id: 'id',
+        }
+      },
+      {
+        path: 'completed',
+        name: 'completed',
+        component: Completed
+      },
+      {
+        path: 'profil',
+        name: 'profil-user',
+        component: ProfilUser
+      },
+      {
+        path: 'histori',
+        name: 'histori',
+        component: Histori
+      },
+      {
+        path: 'notifikasi',
+        name: 'notifikasi',
+        component: Notifikasi
+      }
+    ]
+  },
     
     
     

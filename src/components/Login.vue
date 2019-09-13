@@ -12,12 +12,17 @@
       <div class="row justify-content-md-center form-part">
         <div class="col-md-7">
           <h1 class="mb-5"><img src="../assets/img/logo.png" alt=""></h1>
-          <form>
-            <div class="form-group">
+          <form id="login-form" v-on:submit="login()" >
+            <!-- <div class="form-group">
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" v-model="username">
+            </div> -->
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Username" v-model="username" autocomplete="username" v-on:keyup.enter="login()">
+              <span class="text-danger" v-if="validationErrors.username" v-text="validationErrors.username"></span>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password" autocomplete="current-password" v-on:keyup.enter="login()">
+              <span class="text-danger" v-if="validationErrors.password" v-text="validationErrors.password"></span>
             </div>
             <div class="form-group form-check">
               <div class="row font-primary">
@@ -30,7 +35,7 @@
               </div>
               </div>
             </div>
-            <button type="submit" class="btn-block btn btn-primary mb-2" @click="login()">Masuk</button>
+            <button type="button" class="btn-block btn btn-primary mb-2" @click="login()" >Masuk</button>
             <span class="font-primary">Belum punya akun Cetak ? <span><router-link to="/join" class="join"> Daftar Sekarang </router-link></span></span>
           </form>
         </div>
@@ -108,7 +113,7 @@ export default {
                 isAuthenticated: true
               }
             )
-            this.$router.push({path: 'dashboard-user/id/profil'})
+            this.$router.push({path: 'dashboard-user/profil'})
             console.log(response.status)
             console.log(response.data)
           })
@@ -117,6 +122,7 @@ export default {
             console.log(error)
           })
       }
+      
     },
 
     validateForm(formId = 'login-form', errorObjectName = 'validationErrors'){

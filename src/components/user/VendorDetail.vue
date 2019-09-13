@@ -81,7 +81,6 @@ export default {
 		return {
 			user: 'Hilman Luthfi',
 			name: 'Acadia Print',
-			location: 'Jl. Kaliurang km 9,3, Gandok, Yogyakarta',
 			rangkap: '',
 			halaman: '',
 			pesan: '',

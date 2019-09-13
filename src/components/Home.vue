@@ -7,7 +7,7 @@
 				<br> cepat, mudah, dan dimana saja</h1>
 				<p class="font-secondary font-weight-normal">Dikejar <span class="font-weight-bold">Deadline</span>? Tenang, ada <span class="font-weight-bold">Cetak.Id</span></p>
 				<a v-on:click="getStarted" class="btn-based btn btn-warning" href="#feature">
-					<router-link to='/join' class="btn-based btn">Cetak Sekarang</router-link></a>
+					<router-link to='/order' class="btn-based btn">Cetak Sekarang</router-link></a>
 			</div>
 			<div class="hero-paid col-md-6">
 			</div>
