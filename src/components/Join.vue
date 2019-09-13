@@ -1,17 +1,25 @@
 <template>
-    <div class="join">
-        <Header />
-        <div class="flex flex-column">
-            <h2 class="tc f3 title lh-copy pt6">Bergabung dengan Cetak.id <br> sekarang</h2>
-            <div>
-                <img src="../assets/img/undraw_happy_feeling_slmw.png" alt="Join Cetak.id" />
+<div class="container-fluid">
+    <Header />
+        <div class="row justify-content-md-center join-part">
+            <div class="col-md-12 mb-2">
+                <h2 class="font-hero text-light">AYO BERGABUNG DENGAN CETAK.ID</h2>
             </div>
-            <div>
-                <router-link to="/register-partnership" ><input type="submit" class="f6 link dim  br2 ph4 pv3 mb3 dib button-partnership dtc mh2 mv4" value="DAFTAR SEBAGAI PARTNERSHIP" href="#0" /></router-link>
-                <router-link to="/register-user"><input type="submit" class="f6 link dim br2 ph4 pv3 mb3 dib button-user dtc mh2 mv4" value="DAFTAR SEBAGAI PENGGUNA" href="#0" /></router-link>
+
+            <div class="col-md-12">
+                <p><img src="../assets/img/join.png" alt="Join Cetak.id"/></p>
+            </div>
+            
+            <div class="col-md-12">
+                <router-link to="/register-partnership" ><input type="submit" class="btn btn-warning btn-second" value="DAFTAR SEBAGAI PARTNERSHIP" href="#0" /></router-link>
+                <router-link to="/register-user"><input type="submit" class="btn btn-warning btn-second" value="DAFTAR SEBAGAI PENGGUNA" href="#0" /></router-link>
             </div>
         </div>
-    </div>
+
+        <div class="row justify-content-md-center join-paid">
+        </div>
+</div>
+    
 </template>
 
 <script>
@@ -25,19 +33,15 @@ export default {
 </script>
 
 <style scoped>
-    .title{
-        color: #4286B7;
+    .join-part{
+        min-height: 80vh;
+        background: url('../assets/img/rect.png') no-repeat center; 
+        background-size: cover;
+        background-color: #0E75D3;
+        padding-top: 120px;
     }
-
-    .button-partnership {
-        color: #4286B7;
-        background-color: #C7E87C;
-        border: #4286B7;
-    }
-
-    .button-user {
-        color: #C7E87C;
-        background-color: #4286B7;
-        border: #C7E87C;
+    .join-paid{
+        min-height: 20vh;
+        background-color: #0E75D3;
     }
 </style>

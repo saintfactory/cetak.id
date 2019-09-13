@@ -1,42 +1,32 @@
 <template>
-<div class="monitor pa3">
- <div class="row justify-content-md-center mb3" >
-     <div class="col-md-12 bb mt3">
-        <nav class="navbar navbar-expand-lg navbar-light black">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav black ">
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/monitoring/pesanan" >
-                  Pesanan
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/monitoring/terima">
-                  Terima
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/monitoring/tolak">
-                  Tolak
-                </router-link>
-
-                <router-link class="tl pv1 pl3 f7 menu-list" tag="li" to="/dashboard-partnership/id/monitoring/selesai">
-                  Selesai
-                </router-link>
-                </div>
-            </div>
-        </nav>
+<div class="content-monitor">
+    <div class="row justify-content-md-center">
+    <div class="col-md-12">
+        <table class="f7 table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                <th class="col1" scope="col">Nama Pemesan</th>
+                <th class="col2" scope="col">Status Penerimaan</th>
+                <th class="col3" scope="col">Waktu</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+     <div class="tab-data col-md-12">
+        <table class="f7 table table-bordered table-sm">
+            <tbody>
+                <tr v-for="dataa in dataa" v-bind:key="dataa">
+                <td class="tl col1">{{dataa.name}}</td>
+                <td class=" col2">
+                    <a role="button" class="aksi btn btn-sm btn-success"><i class="fas fa-check"></i></a> &nbsp;
+                    <a role="button" class="aksi btn btn-sm btn-warning"><i class="fas fa-times"></i></a>
+                </td>
+                <td class=" col3">{{dataa.date}}</td>
+                </tr>
+            </tbody>
+        </table>
      </div>
- </div>
- 
- <div class="row mb4">
-     <div class="col-md-12">
-         <input class="form-control" type="text" placeholder="Pencarian..." aria-label="Pencarian...">
-     </div>
- </div>
-
- <div class=" pa3 col-md-12" id="content-monitor">
-          <router-view></router-view>
-          </div>
-
-
+    </div>
 </div>
 </template>
 
@@ -81,7 +71,30 @@ export default {
               name: 'Jembss manja',
               date:'11 April' 
             },
+            {
+              name: 'Jembss manja',
+              date:'11 April' 
+            },
+            {
+              name: 'Jembss manja',
+              date:'11 April' 
+            },
+            {
+              name: 'Jembss manja',
+              date:'11 April' 
+            },
+            {
+              name: 'Jembss manja',
+              date:'11 April' 
+            },
+            {
+              name: 'Jembss manja',
+              date:'11 April' 
+            },
+            
+            
           ]
+            
         })
     }
 </script>
@@ -97,12 +110,9 @@ export default {
     color: black !important;
     margin-right: 20px;
 }
-.menu-list:hover {
-    font-weight: 800 !important;
-}
-.menu-list{
-  cursor: pointer;
-}
+.nav-link:hover {
+    font-weight: 700 !important
+}   
 input[type="text"],
 textarea {
   color: #333;

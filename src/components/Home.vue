@@ -1,60 +1,118 @@
 <template>
-	<div class="home w-100">
+	<div class="container-fluid">
 		<Header />
-		<div class="dt w-100">
-			<div class="hero cover v-mid dtc w-100">
-				<h2 class="white">Cetak Dokumen Kamu dengan Mudah dan Cepat di Mana Saja</h2>
-				<p class="i white">Cetak.ID - Printing Apps Pertama di Indonesia </p>
-				<img class="db center mv4" src="../assets/img/undraw_in_sync_xwsa.png" alt="Cetak dokumen mudah dengan cetak.id"/>
-				<a v-on:click="getStarted" class="hero--button f6 dib bg-animate grow hover-white hover-bg-green no-underline pv3 ph4 br-pill ba bw1" href="#feature">Cetak Sekarang</a>
+		<div class="hero cover row justify-content-md-center">
+			<div class="hero-part col-md-6 text-left">
+				<h1 class="font-hero white mb-3">Cetak dokumen kamu sekarang
+				<br> cepat, mudah, dan dimana saja</h1>
+				<p class="font-secondary font-weight-normal">Dikejar <span class="font-weight-bold">Deadline</span>? Tenang, ada <span class="font-weight-bold">Cetak.Id</span></p>
+				<a v-on:click="getStarted" class="btn-based btn btn-warning" href="#feature">
+					<router-link to='/join' class="btn-based btn">Cetak Sekarang</router-link></a>
+			</div>
+			<div class="hero-paid col-md-6">
 			</div>
 		</div>
-		<h3 class="center mv4 fw1 f2">Bagaimana Caranya?</h3>
-		<div class="flex justify-around w-100" id="feature">
-			<div class="w-25">
-				<img src="../assets/img/undraw_uploading_go67.png" alt="Upload Dokumen di Cetak.id">
-				<p class="f5 black">Upload</p>
-				<p class="f6 black lh-copy">Buat akun Cetak.ID, lalu <br>
-					upload dokumen kamu dan <br>
-					lakukan proses pembayaran
-				</p>
+
+		<div class="usefull row justify-content-md-center">
+			<div class="col-md-12 cara" style="">
+				<h3 class="center font-title mt-5">Bagaimana Caranya?</h3>
 			</div>
-			<div class="w-25">
-				<img src="../assets/img/undraw_printing_invoices_5r4r.png" alt="Upload Dokumen di Cetak.id">
-				<p class="f5 black">Cetak</p>
-				<p class="f6 black lh-copy">Dokumen kamu akan di cetak <br> 
-					sesuai dengan tempat print pilihan kamu
-				</p>
-			</div>
-			<div class="w-25">
-				<img src="../assets/img/undraw_navigation_lytx.png" alt="Upload Dokumen di Cetak.id">
-				<p class="f5 black">Ambil</p>
-				<p class="f6 black lh-copy">
-						{{ content }}
-				</p>
+
+			<div class="row justify-content-md-center batch">
+				<div class="col-sm-4 grow">
+					<div class="col-md-12">
+						<img class="gmbr" src="../assets/img/batch1.png" alt="Upload Dokumen di Cetak.id">
+					</div>
+					<div class="col-md-12">
+						<h5 class="text center font-subhero">UPLOAD</h5>
+					</div>
+					<div class="col-md-12">
+						<p class="font-primary black lh-copy">Daftar akun lalu pilih tempat cetak <br> yang kamu mau kemudian upload file
+						</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4 grow">
+					<div class="col-md-12">
+						<img class="gmbr" src="../assets/img/batch2.png" alt="Upload Dokumen di Cetak.id">
+					</div>
+					<div class="col-md-12">
+						<h5 class="text center font-subhero">CETAK</h5>
+					</div>
+					<div class="col-md-12">
+						<p class="font-primary black lh-copy">Dokumen akan dicetak <br> sesuai dengan tempat permintaan
+						</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4 grow">
+					<div class="col-md-12">
+						<img class="gmbr" src="../assets/img/batch3.png" alt="Upload Dokumen di Cetak.id">
+					</div>
+					<div class="col-md-12">
+						<h5 class="text center font-subhero">AMBIL</h5>
+					</div>
+					<div class="col-md-12 text-center">
+						<p class="font-primary black lh-copy">Ambil hasil cetak dokumen <br> di tempat pilihan sekaligus bayar
+						</p>
+					</div>
+				</div>
+
 			</div>
 		</div>
-		<div class="feature2">
-			<h1 class="feature2--title pt5">110.000+ Dokumen</h1>
-			<p class="white">Sudah berhasil dicetak</p>
-			<p class="white lh-copy">Ratusan ribu pengguna semakin mudah dan cepat<br>
-					mencetak dokumen setelah menggunakan Cetak.ID
-			</p>
-			<a 
-				v-on:click="getStarted" 
-				class="hero--button f6 dib bg-animate grow hover-white hover-bg-green no-underline pv3 ph4 mv4 br-pill ba bw1" 
-				href="#feature"
-			>
-				Cetak Sekarang
-			</a>
+
+		<div class="cover row justify-content-md-center footer">
+			<div class="col-sm-12 part-foot">
+				<h1 class="font-hero yellow mb-3">1000+ Dokumen</h1>
+				<h2 class="font-subhero white mb-3">Sudah berhasil dicetak</h2>
+				<p class="font-primary white mb-4 font-italic">Ribuan pengguna semakin mudah dan cepat<br>
+						mencetak dokumen setelah menggunakan Cetak.ID
+				</p>
+				<a v-on:click="getStarted" class="btn-based btn btn-warning" href="#feature">
+					<router-link to='/join' class="btn-based btn">Cetak Sekarang</router-link></a>
+			</div>
 		</div>
-		<Footer />
+		
+		<div class="cover row justify-content-md-center super-foot text-left pl-5 pt-4">
+			<div class="col-md-4">
+				<img src="../assets/img/logo-putih.png" height="40" alt="">
+				<p class="white font-primary">Copyright Cetak.Id 2019</p>
+			</div>
+
+			<div class="col-md-8">
+				<table class="table table-sm table-borderless">
+					<thead class="font-primary text-light font-weight-bold">
+						<th>Navigasi</th>
+						<th>Sosial Media</th>
+						<th>Info & Kontak</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Tentang Kami</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Facebook</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">+62 895 6169 52598</router-link></a></td>
+						</tr>
+						<tr>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Kebijakan</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Instagram</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">+62 838 6967 9347</router-link></a></td>
+						</tr>
+						<tr>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Cara Cetak</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">Linked In</router-link></a></td>
+							<td><a><router-link to='/tentang-kami' class="white font-smaller">cetak.info@gmail.com</router-link></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
 	</div>
 </template>
 
 <script>
 import Header from './Header.vue'
-import Footer from './Footer.vue'
 
 export default {
 	name: 'Home',
@@ -64,8 +122,7 @@ export default {
 		}
 	},
 	components: {
-		Header,
-		Footer
+		Header
 	},
 	methods: {
 		getStarted: function(){
@@ -83,4 +140,11 @@ export default {
 		box-shadow: 0px 4px 30px #C7E87C;
 		box-sizing: border-box;
 	}
+
+	.gmbr{
+		min-height: 290px;
+		max-height: 290px;
+		margin-bottom: 40px;
+	}
+	
 </style>

@@ -1,4 +1,44 @@
 <template>
+<div class="container-fluid">
+  <div class="row login cover">
+    <div class="part-login col-md-7 text-left">
+      <h1 class="font-hero white mb-3">Selamat Datang</h1>
+			<h2 class="font-secondary text-light font-weight-normal">Gunakan akun kamu untuk masuk</h2>
+      <p class="font-secondary font-weight-normal mb-5">Dikejar <span class="font-weight-bold">Deadline</span>? Tenang, ada <span class="font-weight-bold">Cetak.Id</span></p>
+      <img src="../assets/img/login.png" width="40%" alt="">
+    </div>
+
+    <div class="form-login col-md-5">
+      <div class="row justify-content-md-center form-part">
+        <div class="col-md-7">
+          <h1 class="mb-5"><img src="../assets/img/logo.png" alt=""></h1>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" v-model="username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
+            </div>
+            <div class="form-group form-check">
+              <div class="row font-primary">
+              <div class="col-md-6 text-left">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Ingat Kata Sandi</label>
+              </div>
+              <div class="col-md-6 text-right">
+                <p><router-link to="" class="forgot"> Lupa Kata Sandi </router-link></p>
+              </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-block btn btn-primary mb-2" @click="login()">Masuk</button>
+            <span class="font-primary">Belum punya akun Cetak ? <span><router-link to="/join" class="join"> Daftar Sekarang </router-link></span></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div>
   <div class="login white">
     <form id="login-form">
       <img src="../assets/img/logo.png" class="logo mv3" alt="Logo Cetak.id"/> <br>
@@ -33,7 +73,7 @@
     </form>
     <p class="mv3 mt4 white">Lupa password ? <router-link to="" class="link b i white"> Reset password sekarang </router-link></p>
     <p class="mv3 white">Belum punya akun ? <router-link to="/join" class="link b i white">Register sekarang</router-link></p>
-  </div>
+  --> 
 </template>
 
 <script>
@@ -112,14 +152,43 @@ export default {
 
 <style scoped>
 .login {
-  background:url('../assets/img/backgroundcetak.png') no-repeat center;
-  background-color: #4286B7;
-  position: relative;
-  padding-bottom: 10%;
-  padding-top: 10%;
-  min-height: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5
 }
 
+.part-login{
+  background:url('../assets/img/bgbiru.png') no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+  padding-left: 200px;
+}
+.form-part{
+  position: relative;
+  padding-top: 30%;
+  min-height: 100vh
+}
+.form-group{
+  margin-top: 20px;
+}
+input[type=text], 
+input[type=password] {
+  border: none;
+}
+input::placeholder{
+  font-size: 14px;
+}
+.forgot{
+  text-decoration: none;
+  color: #252525 !important
+}
+.forgot:hover{
+  color: #DCAB0A !important
+}
+.join{
+  text-decoration: none;
+  font-weight: 600;
+}
+/* 
 form {
   background-color: white;
   width: 500px;
@@ -157,5 +226,5 @@ input[type=button] {
   margin: 0 auto;
   float: none;
   outline: none;
-}
+} */
 </style>

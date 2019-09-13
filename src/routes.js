@@ -6,10 +6,16 @@ import CaraPrint from './components/CaraPrint.vue'
 import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
 import DashboardUser from './components/user/Dashboard.vue'
+
 import Dashboard from './components/partnership/Dashboard.vue'
 import Profil from './components/partnership/Profil.vue'
 import Monitoring from './components/partnership/Monitoring.vue'
+import Pesanan from './components/partnership/Pesanan/Pesanan.vue'
+import Diterima from './components/partnership/Pesanan/Diterima.vue'
+import Ditolak from './components/partnership/Pesanan/Ditolak.vue'
+import Selesai from './components/partnership/Pesanan/Selesai.vue'
 import Etalase from './components/partnership/Etalase.vue'
+
 import VendorDetail from './components/user/VendorDetail.vue'
 import Completed from './components/user/Completed.vue'
 import Vendors from './components/user/Vendors.vue'
@@ -70,7 +76,29 @@ const routes = [
             },
             {
                 path: 'monitoring',
-                component: Monitoring
+                component: Monitoring,
+                children: [
+                    {
+                        path:'',
+                        component: Pesanan
+                    },
+                    {
+                        path:'pesanan',
+                        component: Pesanan
+                    },
+                    {
+                        path:'terima',
+                        component: Diterima
+                    },
+                    {
+                        path:'tolak',
+                        component: Ditolak
+                    },
+                    {
+                        path:'selesai',
+                        component: Selesai
+                    }
+                ]
             },
             {
                 path: 'etalase',

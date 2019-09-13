@@ -4,6 +4,14 @@
     <table class="w-100">
       <tr>
         <td>
+          <div>
+            <label for="foto" class="fl f7 lh-copy">Foto tempat</label><br>
+            <input type="file" :id="inputName" :name="inputName"  v-on:change="signalChange" />  
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <span class="fl f6 b db mb2">Profil Tempat</span>
         </td>
       </tr>
@@ -124,6 +132,10 @@
 </script>
 
 <style scoped>
+p{
+  margin-top: 0;
+  margin-left: -70px
+}
 label{
   font-weight: 500 !important;
 }
@@ -153,11 +165,17 @@ input[type="radio"] {
   vertical-align: middle;
   min-height: 20px;
 }
+input[type="file"]{
+  border-radius: 5px;
+  border: none
+}
 .radio {
   display: flex;
   flex-direction: row;
 }
-
+#blah{
+  margin-left: 0 !important;
+}
 .align {
   padding: 0;
   vertical-align: top;

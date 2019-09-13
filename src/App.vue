@@ -24,7 +24,7 @@ export default {
 <style >
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto');
 #app {
-  font-family: 'Open Sans', 'Lato', 'Roboto', sans-serif;
+  font-family: 'Open Sans' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
