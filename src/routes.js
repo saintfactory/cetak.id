@@ -1,12 +1,16 @@
-import Home from './components/Home.vue'
+import Based from './components/layouter/Based.vue'
+
+import Home from './components/homepage/Home.vue'
+import TentangKami from './components/homepage/TentangKami.vue'
+import CaraPrint from './components/homepage/CaraPrint.vue'
+import Kebijakan from './components/homepage/Kebijakan.vue'
+
 import Login from './components/Login.vue'
 import Join from './components/Join.vue'
-import TentangKami from './components/TentangKami.vue'
-import CaraPrint from './components/CaraPrint.vue'
 import RegisterUser from './components/RegisterUser.vue'
 import RegisterPartnership from './components/RegisterPartnership.vue'
-import DashboardUser from './components/user/Dashboard.vue'
 
+import DashboardUser from './components/user/Dashboard.vue'
 import Dashboard from './components/partnership/Dashboard.vue'
 import Profil from './components/partnership/Profil.vue'
 import Monitoring from './components/partnership/Monitoring.vue'
@@ -22,7 +26,6 @@ import Vendors from './components/user/Vendors.vue'
 import ProfilUser from './components/user/Profil.vue'
 import Histori from './components/user/Histori.vue'
 import Notifikasi from './components/user/Notifikasi.vue'
-
 //const url = 'http://127.0.0.1:8000/api/board/'
 
 const routes = [
@@ -32,9 +35,37 @@ const routes = [
     },
     { 
         path: '/', 
-        name: 'home',
-        component: Home 
+        name: 'based',
+        component: Based,
+        children: [
+            {
+                path: '',
+                component: Home
+            },
+            {
+                path: '/home',
+                component: Home
+            },
+            { 
+                path: '/tentang', 
+                component: TentangKami 
+            },
+            { 
+                path: '/cara', 
+                component: CaraPrint 
+            },
+            {
+                path: '/kebijakan', 
+                component: Kebijakan 
+            },
+            { 
+                path: '/join', 
+                component: Join 
+            },
+        ]
     },
+
+
     { 
         path: '/login', 
         name: 'login',
@@ -50,18 +81,9 @@ const routes = [
         name: 'register-partnership',
         component: RegisterPartnership
     },
-    { 
-        path: '/join', 
-        component: Join 
-    },
-    { 
-        path: '/tentang-kami', 
-        component: TentangKami 
-    },
-    { 
-        path: '/cara-print', 
-        component: CaraPrint 
-    },
+    
+
+    
     {
         path: '/dashboard-partnership/:id',
         component: Dashboard,
@@ -106,6 +128,8 @@ const routes = [
             },
         ]
     },
+
+
     {
         path: '/dashboard-user/:id',
         component: DashboardUser,

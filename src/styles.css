@@ -68,6 +68,11 @@ li{
 .font-smaller{
     font-size: 12px;
 }
+.font-smaller:hover{
+    color: #F4BE0B !important;
+    text-decoration: none;
+    transform: scale(1.02) !important;
+}
 .btn-based{
     border-radius: 25px;
     color: white;
@@ -76,11 +81,12 @@ li{
 .btn-second{
     border-radius: 5px;
     height: 50px;
-    width: 300px;
+    width: 250px;
     margin: 30px;
-    color: white;
+    color: #25282B !important;
+    word-spacing: 0.5px;
     text-decoration: none;
-    font-weight: 700
+    font-weight: 600 !important
 }
 .btn-primary{
     background-color: #0065C2 !important
@@ -89,30 +95,6 @@ li{
     background-color: rgb(8, 85, 157) !important
 }
 
-/* =========================================================================== */
-
-.hero {
-    background:url('./assets/img/bghome.png') no-repeat center;
-    min-height: 950px;
-    background-color: rgba(255, 255, 255, 0.816);
-    padding-top: 200px
-}
-.hero-part{
-    padding: 100px;
-}
-.hero-paid{
-    background: url('./assets/img/home-paid.png') no-repeat;
-}
-section{
-    margin-top: 10vh
-}
-.home-image{
-    min-width: 70%
-}
-
-.hero--button {
-    color: #C7E87C;
-}
 
 
 /* =========================================================================== */
@@ -187,3 +169,7 @@ section{
     border-radius: 50px;
 }
 
+a:hover{
+    transition: transform .10s !important;
+    transform: scale(1.05) !important;
+}

@@ -9,7 +9,7 @@
 
 			<div class="col-md-8 join-user-paid">
 				<div class="row justify-content-md-center">
-				<div class="col-md-7">
+				<div class="col-md-6">
 				<form>
 					<div class="form-group">
 						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" v-model="username">

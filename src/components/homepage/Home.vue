@@ -1,12 +1,12 @@
 <template>
 	<div class="container-fluid">
-		<Header />
+		<!-- <Header /> -->
 		<div class="hero cover row justify-content-md-center">
 			<div class="hero-part col-md-6 text-left">
 				<h1 class="font-hero white mb-3">Cetak dokumen kamu sekarang
 				<br> cepat, mudah, dan dimana saja</h1>
 				<p class="font-secondary font-weight-normal">Dikejar <span class="font-weight-bold">Deadline</span>? Tenang, ada <span class="font-weight-bold">Cetak.Id</span></p>
-				<a v-on:click="getStarted" class="btn-based btn btn-warning" href="#feature">
+				<a v-on:click="getStarted" class="btn-based btn btn-warning">
 					<router-link to='/join' class="btn-based btn">Cetak Sekarang</router-link></a>
 			</div>
 			<div class="hero-paid col-md-6">
@@ -19,9 +19,9 @@
 			</div>
 
 			<div class="row justify-content-md-center batch">
-				<div class="col-sm-4 grow">
+				<div class="col-sm-4  ">
 					<div class="col-md-12">
-						<img class="gmbr" src="../assets/img/batch1.png" alt="Upload Dokumen di Cetak.id">
+						<img class="gmbr" src="../../assets/img/batch1.png" alt="Upload Dokumen di Cetak.id">
 					</div>
 					<div class="col-md-12">
 						<h5 class="text center font-subhero">UPLOAD</h5>
@@ -32,9 +32,9 @@
 					</div>
 				</div>
 
-				<div class="col-sm-4 grow">
+				<div class="col-sm-4  ">
 					<div class="col-md-12">
-						<img class="gmbr" src="../assets/img/batch2.png" alt="Upload Dokumen di Cetak.id">
+						<img class="gmbr" src="../../assets/img/batch2.png" alt="Upload Dokumen di Cetak.id">
 					</div>
 					<div class="col-md-12">
 						<h5 class="text center font-subhero">CETAK</h5>
@@ -45,9 +45,9 @@
 					</div>
 				</div>
 
-				<div class="col-sm-4 grow">
+				<div class="col-sm-4  ">
 					<div class="col-md-12">
-						<img class="gmbr" src="../assets/img/batch3.png" alt="Upload Dokumen di Cetak.id">
+						<img class="gmbr" src="../../assets/img/batch3.png" alt="Upload Dokumen di Cetak.id">
 					</div>
 					<div class="col-md-12">
 						<h5 class="text center font-subhero">AMBIL</h5>
@@ -75,7 +75,7 @@
 		
 		<div class="cover row justify-content-md-center super-foot text-left pl-5 pt-4">
 			<div class="col-md-4">
-				<img src="../assets/img/logo-putih.png" height="40" alt="">
+				<img src="../../assets/img/logo-putih.png" height="40" alt="">
 				<p class="white font-primary">Copyright Cetak.Id 2019</p>
 			</div>
 
@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import Header from './Header.vue'
+// import Header from './Header.vue'
 
 export default {
 	name: 'Home',
@@ -122,11 +122,10 @@ export default {
 		}
 	},
 	components: {
-		Header
+		// Header
 	},
 	methods: {
 		getStarted: function(){
-			// alert("Welcome to Cetak.id! " + Date());
 			document.getElementsByClassName("hero--button").scrollspy({target: ".home", offset: 100});
 		}
 	},
@@ -134,17 +133,61 @@ export default {
 </script>
 
 <style scoped>
-	.hero--button {
-		color: #C7E87C;
-		border: 3px solid #C7E87C;
-		box-shadow: 0px 4px 30px #C7E87C;
-		box-sizing: border-box;
-	}
+.btn-based{
+    border-radius: 25px;
+    color: white;
+	text-decoration: none;
+}
+.btn-based:hover{
+    color: #0065C2 !important;
+    text-decoration: none;
+}
+.btn-second{
+    border-radius: 5px;
+    height: 50px;
+    width: 300px;
+    margin: 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700
+}
+.btn-primary{
+    background-color: #0065C2 !important
+}
+.btn-primary:hover{
+    background-color: rgb(8, 85, 157) !important
+}
+.hero {
+    background:url('../../assets/img/bghome.png') no-repeat center;
+    min-height: 950px;
+    background-color: rgba(255, 255, 255, 0.816);
+    padding-top: 200px
+}
+.hero-part{
+    padding: 100px;
+}
+.hero-paid{
+    background: url('../../assets/img/home-paid.png') no-repeat;
+}
+section{
+    margin-top: 10vh
+}
+.home-image{
+    min-width: 70%
+}
 
-	.gmbr{
-		min-height: 290px;
-		max-height: 290px;
-		margin-bottom: 40px;
-	}
-	
+.hero--button {
+    color: #C7E87C;
+}
+
+.gmbr{
+	min-height: 290px;
+	max-height: 290px;
+	margin-bottom: 40px;
+}
+
+.gmbr:hover{
+	transition: transform .5s !important;
+	transform: scale(1.1) !important
+}
 </style>
