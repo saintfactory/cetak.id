@@ -106,9 +106,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style >
 
-@import "~vue-material/dist/theme/engine"; // Import the theme engine
+/* @import "~vue-material/dist/theme/engine"; // Import the theme engine
 
 @include md-register-theme("default", (
   primary: md-get-palette-color(white, A200), // The primary color of your application
@@ -116,7 +116,7 @@ export default {
   theme: dark
 ));
 
-@import "~vue-material/dist/theme/all"; // Apply the theme
+@import "~vue-material/dist/theme/all"; // Apply the theme */
 
 .register-user {
   background-color: #4286B7;

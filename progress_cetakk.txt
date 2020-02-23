@@ -1,0 +1,76 @@
+1. Progress dari setiap masing-masing divisi
+2. Task dari RRJ pekan lalu
+3. Pembahasan vendor 
+4. Usulan tawaran order undangan
+
+Plan :
+1. Optimalisasi stack landing page untuk beta supaya masalah finance tercover
+2. Bentuk kerjasama sponsor :
+ -Mensponsori percetakan LPJ, proposal, dll
+ -Dari semua peserta acara disuruh gunakan service cetakk.id
+3. Untuk release november, stack yang dipakai masih pergunakan stack landing page (firebase), tapi masih belum meng-cover dashboard untuk vendor
+4. Untuk meng-cover masalah dashboard untuk vendor, bisa diganti dengan Email
+5. Mencoba menghilangkan service delivery untuk menghilangkan ketergantungan 
+6. Fitur rating & feedback untuk vendor
+7. MoU untuk semua stakeholder
+8. Bulan Oktober dapat 10 vendor toko & 10 vendor personal
+9. Cetakk.id hanya menentukan margin untuk cetakk.id tidak mematok harga vendor
+10. Pembedaan vendor untuk harga
+11. Perlu value proposisition untuk vendor
+    -Validasikan dari riset nanti
+12. Kemampuan vendor untuk menerima order seberapa banyak
+    -Fitur on/off untuk ketersediaan order
+    -Tambahan order-list
+13. Penambahan jasa bisa ditambahkan di etalase
+    -Scale up untuk jasa bisa dilakukan setelah punya traffic banyak (diriset bulan desember untuk vendor percetakan)
+14. Biaya operasional ongkir sampai sekarang masih gratis. Tapi sudah direncanakan untuk dikasih biaya operasional dan diimplementasi November
+15. Masalah fiktif order kemungkinan ada saat order
+16. Jasa antar tergantung traffic sama feedback sekaligus scale up ke percetakan
+17. Buat timeline masing-masing
+
+Progress Finance :
+1. Uang kas 125rb jadi 170rb->terpakai beli tinta + pemasukan malam ini 45rb (belum semua)
+
+Progress Bisdev :
+1. Order belum nambah
+2. Total pemasukan 870rb-an (baru tambah 50rb)
+3. Publikasi belum aktif karena ada kesibukan lain
+
+Progress UI/UX :
+1. Belum ada progress lagi 
+2. Perubahan kecil di dashboard
+3. Konsistensi layout
+
+Progress backend :
+1. Belum konfigurasi hosting & fitur2 lainnya
+
+Progress inisiasi frontend :
+1. Tambah Struktur standar komponen
+2. Tambah respond network
+3. Tambah otentikasi ke halaman tertentu
+4. Konsistensi layout
+5. Implementasi plugin/lib untuk print tanpa download
+6. Caching di frontend
+
+
+Pembahasan vendor :
+1. Hasil dari pak Sigit 
+ -Lebih menonjolkan sistem ketimbang proses bisnis secara manual
+ -reminding untuk gaining jumlah vendor
+ -Make sure untuk mudah digunakan user 
+ -Punya standar kualitas untuk vendor (masalah kualitas layanan vendor), syarat & ketentuan 
+  
+Tawaran cetak undangan :
+1. Permasalahan jumlah dan tidak ada modal
+2. Butuh riset untuk harga di percetakan, butuh waktu
+3. Belum tau keuntungan yang diambil percetakan
+4. Hilmen harus tanya dulu detail tawaran cetak
+5. Kita buat rancangan harga di awal
+
+Usulan tanggapan sponsor :
+1. Tiap peserta harus cetak dokumen dengan layanan cetakk.id
+2. Target transaksi dari acara 50-70 order (COSMIC)
+3. Tawaran kita jadi pembicara/pengisi acara (INPUT)
+4. Kasih voucher 150.000 (INPUT)
+5. 200rb untuk cosmic
+

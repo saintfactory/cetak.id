@@ -125,7 +125,7 @@ export default {
         types: this.types,
         note: this.note
       }
-      await Axios.post('http://127.0.0.1:8000/order/', payload, {
+      await Axios.post(this.$store.state.order.endpoints.order, payload, {
         headers: {
           'Access-control-Allow-Origin': true,
           'content-type': 'application/json'  
