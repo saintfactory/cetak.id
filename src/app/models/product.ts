@@ -1,6 +1,7 @@
 export interface Product {
+    id: number,
     name: string;
     avatar: string;
-    location: string;
-    description: string;
+    address: string;
+    openOrder: string;
   }
